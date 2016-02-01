@@ -11,17 +11,12 @@
 
 body {
 	margin: 0px;
-	padding: 0px;
-	width: 100%;
-	height: 535px;
+	padding-top: 0px;
 	background-position: 40% 70%;
 	background-size: cover;
-	background-image: url("../img/his_hers_original_scale.jpg");
+	background-image: url("../img/kathryn_and_me_bigsur.jpg");
 	background-repeat: no-repeat;
-}
-
-div.section {
-	padding: 15px;
+	position: relative;
 }
 
 div.header {
