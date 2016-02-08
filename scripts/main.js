@@ -13,29 +13,74 @@ var main = {
 };
 
 $(document).ready(function() {
+	$('.countdown').hide();
 	setInterval(function() {
+		var currently = new Date();
 		var secondsRemaining = main.secondsUntilEvent();
 		if(secondsRemaining > 0) {
-			var daysRem = Math.floor(secondsRemaining / (24 * 60 * 60));
-			secondsRemaining %= (24 * 60 * 60);
-			if($.trim($(".timeunit.day").html()) != daysRem + '') {
-				$('.timeunit.day').html(daysRem);
+			$('.countdown').show();
+			var secondsRemaining = main.timeOfEvent.getSeconds() - currently.getSeconds();
+			var minutesRemaining = main.timeOfEvent.getMinutes() - currently.getMinutes();
+			var hoursRemaining = main.timeOfEvent.getHours() - currently.getHours();
+			var monthsRemaining = main.timeOfEvent.getMonth() - currently.getMonth();
+			var yearDiff = main.timeOfEvent.getFullYear() > currently.getFullYear();
+			var daysRemaining = main.timeOfEvent.getDate() - currently.getDate();
+			if(yearDiff > 0) {
+				monthsRemaining += (12 * yearDiff);
+			}
+			if(daysRemaining < 0) {
+				monthsRemaining--;
+				if(currently.getMonth() == 0 || currently.getMonth() == 2 || currently.getMonth() == 4 || currently.getMonth() == 6 ||
+						currently.getMonth() == 7 || currently.getMonth() == 9 || currently.getMonth() == 11) {
+					daysRemaining += 31;
+				} else if(currently.getMonth() == 1) {
+					daysRemaining += 28;
+					if(currently.getYear() % 4 == 0) {
+						daysRemaining++;
+					}
+				} else {
+					daysRemaining += 30;
+				}
 			}
 
-			var hrsRem = Math.floor(secondsRemaining / (60 * 60));
-			secondsRemaining %= (60 * 60);
-			if($.trim($('.timeunit.hour').html()) != hrsRem) {
-				$('.timeunit.hour').html(hrsRem);
+			if(hoursRemaining < 0) {
+				daysRemaining--;
+				hoursRemaining += 24;
 			}
 
-			minRem = Math.floor(secondsRemaining / 60);
-			secondsRemaining %= 60;
-			if($.trim($('.timeunit.minute').html()) != minRem) {
-				$('.timeunit.minute').html(minRem);
+			if(minutesRemaining < 0) {
+				hoursRemaining--;
+				minutesRemaining += 60;
 			}
 
-			if($.trim($('.timeunit.second').html()) != secondsRemaining) {
-				$('.timeunit.second').html(secondsRemaining);
+			if(secondsRemaining < 0) {
+				minutesRemaining--;
+				secondsRemaining += 60;
+			}
+
+			if(monthsRemaining > 1) {
+				$('.countdown .month').show();
+				if($.trim($('.countdown .month > div').html()) != monthsRemaining) {
+					$('.countdown .month > div').html(monthsRemaining);
+				}
+			} else {
+				$('.countdown .month').hide();
+			}
+
+			if($.trim($('.countdown .day > div').html()) != daysRemaining) {
+				$('.countdown .day > div').html(daysRemaining);
+			}
+
+			if($.trim($('.countdown .hour > div').html()) != hoursRemaining) {
+				$('.countdown .hour > div').html(hoursRemaining);
+			}
+
+			if($.trim($('.countdown .minute > div').html()) != minutesRemaining) {
+				$('.countdown .minute > div').html(minutesRemaining);
+			}
+
+			if($.trim($('.countdown .second > div').html()) != secondsRemaining) {
+				$('.countdown .second > div').html(secondsRemaining);
 			}
 		}
 	}, 1000);

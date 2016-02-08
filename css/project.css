@@ -1,23 +1,32 @@
+/* latin */
 @font-face {
-  font-family: 'Dancing Script';
+  font-family: 'Cedarville Cursive';
   font-style: normal;
   font-weight: 400;
-  src: local('Dancing Script'), local('DancingScript'), url(https://fonts.gstatic.com/s/dancingscript/v6/DK0eTGXiZjN6yA8zAEyM2ZsM3FTMmj2kTPH3yX99Yaw.woff2) format('woff2');
+  src: local('Cedarville Cursive'), local('Cedarville-Cursive'), url(https://fonts.gstatic.com/s/cedarvillecursive/v7/cuCe6HrkcqrWTWTUE7dw-4iNpYP4ormdS933dwqOPYU.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Just Me Again Down Here';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Just Me Again Down Here'), local('JustMeAgainDownHere'), url(https://fonts.gstatic.com/s/justmeagaindownhere/v8/sN06iTc9ITubLTgXoG-kc9LxhifvsZyFlIktPLD8SVhSjxrNWc6TL5x1_u3zzrgH.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
 @font-face {
-  font-family: 'Dancing Script';
+  font-family: 'Just Me Again Down Here';
   font-style: normal;
-  font-weight: 700;
-  src: local('Dancing Script Bold'), local('DancingScript-Bold'), url(https://fonts.gstatic.com/s/dancingscript/v6/KGBfwabt0ZRLA5W1ywjowdZ1pH3HRdX2lLFmZY4nwnk.woff2) format('woff2');
+  font-weight: 400;
+  src: local('Just Me Again Down Here'), local('JustMeAgainDownHere'), url(https://fonts.gstatic.com/s/justmeagaindownhere/v8/sN06iTc9ITubLTgXoG-kcxBxoRNZkC32eJ50uEAK8oQC1LhKU8qFLLahJuQDJSaO.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
 body {
   margin: 0px;
   padding-top: 0px;
   position: relative;
-  font-family: Verdana, Geneva, sans-serif;
+  font-family: "Just Me Again Down Here", Verdana, Geneva, sans-serif;
 }
 body div.header {
   width: 100%;
@@ -27,7 +36,7 @@ body div.header div.title {
   float: left;
 }
 body div.header div.title h2 {
-  font-family: "Dancing Script", cursive, Verdana, Geneva, sans-serif;
+  font-family: "Cedarville Cursive", cursive, Verdana, Geneva, sans-serif;
   font-weight: 700;
   font-size: 30px;
   margin: 10px 20px;
@@ -51,7 +60,7 @@ body div.content {
   min-height: 700px;
   background-position: 40% 70%;
   background-size: cover;
-  background-image: url("../img/rocky_mountain_natl_park.jpg");
+  background-image: url("../img/kathryn_and_me_bigsur.jpg");
   background-repeat: no-repeat;
   position: relative;
 }
@@ -60,25 +69,26 @@ body div.content div.introduction {
   top: 150px;
   margin-left: 20px;
 }
-body div.content div.introduction div.countdown div.timeunit {
+body div.content div.introduction div.countdown {
+  font-family: "Just Me Again Down Here", Verdana, Geneva, sans-serif;
+  font-size: 36px;
+}
+body div.content div.introduction div.countdown > div {
   float: left;
-  text-align: center;
-  font-size: 18px;
-  background-color: white;
+}
+body div.content div.introduction div.countdown > div > span {
   color: black;
-  font-weight: bold;
-  width: 50px;
-  height: 30px;
-  margin: 0 1px 0 5px;
   line-height: 1.75em;
 }
-body div.content div.introduction div.countdown div.unit {
+body div.content div.introduction div.countdown > div > div {
   float: left;
-  font-size: 15px;
+  text-align: center;
+  font-size: 16px;
   font-weight: bold;
-  color: black;
-  text-align: left;
-  margin: 0 5px 0 1px;
+  background-color: white;
+  width: 40px;
+  height: 30px;
+  margin: 0 10px 0 12px;
   line-height: 1.75em;
 }
 body div.content div.floating-content {
