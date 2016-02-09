@@ -47,20 +47,21 @@ body div.header div.title h4 {
   margin: 20px 20px;
   float: left;
 }
-body div.header ul {
+body div.header ul.sections {
   float: left;
 }
-body div.header ul li {
+body div.header ul.sections li {
   list-style: none;
   float: left;
   margin: 5px 20px;
+  cursor: pointer;
 }
 body div.content {
   width: 100%;
   min-height: 700px;
   background-position: 40% 70%;
   background-size: cover;
-  background-image: url("../img/kathryn_and_me_bigsur.jpg");
+  background-image: url("../img/his_hers_original_scale.jpg");
   background-repeat: no-repeat;
   position: relative;
 }
@@ -71,29 +72,33 @@ body div.content div.introduction {
 }
 body div.content div.introduction div.countdown {
   font-family: "Just Me Again Down Here", Verdana, Geneva, sans-serif;
-  font-size: 36px;
+  font-size: 30px;
+  color: white;
 }
 body div.content div.introduction div.countdown > div {
   float: left;
 }
 body div.content div.introduction div.countdown > div > span {
-  color: black;
-  line-height: 1.75em;
+  line-height: 0.75em;
 }
 body div.content div.introduction div.countdown > div > div {
   float: left;
   text-align: center;
-  font-size: 16px;
   font-weight: bold;
+  color: black;
   background-color: white;
   width: 40px;
   height: 30px;
   margin: 0 10px 0 12px;
-  line-height: 1.75em;
+  line-height: 1em;
 }
-body div.content div.floating-content {
+body div.content div.sections {
   float: left;
   width: 40%;
+  display: none;
+  background-color: white;
+}
+body div.content div.sections > div {
   display: none;
 }
 body div.footer {
@@ -105,7 +110,8 @@ body div.footer div.copyright {
   vertical-align: middle;
   line-height: 3.5em;
 }
-.shaded {
+.header,
+.footer {
   background-color: purple;
   color: white;
   font-size: 14px;

@@ -9,6 +9,52 @@ var main = {
 		}
 
 		return 0;
+	},
+
+	populateNavigation : function() {
+		var ul = $("div.header ul.sections");
+		var sections = $("div.content div.sections > div");
+		for(var i = 0, len = sections.length; i < len; i++) {
+			var words = $(sections[i]).attr('name').split('_');
+			var capitalized = [];
+			for(var j = 0, count = words.length; j < count; j++) {
+				capitalized[j] = words[j].charAt(0).toUpperCase() + words[j].slice(1);
+			}
+			var title = capitalized.join(' ');
+			$(ul).append($('<li />').attr('name', $(sections[i]).attr('name')).html(title));
+		}
+
+		$(ul).click(function(e) {
+			if($(e.target).is('li')) {
+				var name = $(e.target).attr('name');
+				var subject = $('div.content div.sections > div[name*="' + name + '"]');
+				var bkgr = $('div.content div.sections');
+				if(subject && $(subject).is('div')) {
+					// Subject is found, we should show this.
+					if($(subject).css('display') == 'none') {
+						$('div.content div.sections > div').css('display','none');
+						if($(bkgr).css('display') == 'none') {
+							$(bkgr).css('width','700px').css('height','1px').css('display','block').animate({
+								height: '400px'
+							}, 1000, function() {
+								$(subject).css('display','block');
+							});
+						} else {
+							$(subject).css('display','block');
+						}
+					}
+				} else {
+					$('div.content div.sections > div').css('display','none');
+					if($(bkgr).css('display') == 'block') {
+						$(bkgr).animate({
+							height: '1px'
+						}, 1000, function() {
+							$(bkgr).css('display','none');
+						});
+					}
+				}
+			}
+		});
 	}
 };
 
@@ -84,4 +130,6 @@ $(document).ready(function() {
 			}
 		}
 	}, 1000);
+
+	main.populateNavigation();
 });
