@@ -1,0 +1,28 @@
+<project name="kathrynandraymond.github.io">
+	<property name="framework.dir" value="framework" />
+	<property name="build.dir" value="build" />
+	<property name="build.css.dir" value="${build.dir}/stylesheets" />
+	<property name="src.css.dir" value="${framework.dir}/stylesheets" />
+	<property name="css.dir" value="css" />
+	<property name="scripts.dir" value="scripts" />
+
+	<target name="-concatenate-less-files">
+		<concat encoding="UTF-8" destfile="${build.css.dir}/main.less">
+			<fileset dir="${src.css.dir}" includes="elements.less" />
+			<fileset dir="${src.css.dir}" includes="*.less" excludes="elements.less" />
+			<fileset dir="${src.css.dir}" includes="*.css" />
+		</concat>
+	</target>
+
+	<target name="convert-less-css">
+		<exec executable="lessc">
+		    <arg value="${build.css.dir}/main.less"/>
+		    <arg value="${css.dir}/project.css"/>
+		</exec>
+	</target>
+
+	<target name="build-dependencies">
+		<antcall target="-concatenate-less-files" />
+		<antcall target="convert-less-css" />
+	</target>
+</project>

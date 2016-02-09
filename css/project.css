@@ -1,3 +1,9 @@
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
 /* latin */
 @font-face {
   font-family: 'Cedarville Cursive';
@@ -25,81 +31,99 @@
 body {
   margin: 0px;
   padding-top: 0px;
-  position: relative;
   font-family: "Just Me Again Down Here", Verdana, Geneva, sans-serif;
 }
 body div.header {
   width: 100%;
-  height: 67px;
+  height: 75px;
 }
 body div.header div.title {
   float: left;
 }
-body div.header div.title h2 {
+body div.header div.title div:nth-child(1) {
   font-family: "Cedarville Cursive", cursive, Verdana, Geneva, sans-serif;
   font-weight: 700;
-  font-size: 30px;
-  margin: 10px 20px;
+  font-size: 36px;
+  margin: 7px 20px 0 30px;
   float: left;
 }
-body div.header div.title h4 {
-  font-size: 15px;
-  margin: 20px 20px;
+body div.header div.title div:nth-child(2) {
+  font-size: 20px;
+  margin: 25px 0;
+  padding: 0 20px;
+  border: 1px solid gray;
+  border-width: 0 1px 0 1px;
   float: left;
 }
 body div.header ul.sections {
   float: left;
+  margin: 15px;
 }
 body div.header ul.sections li {
+  font-size: 18px;
   list-style: none;
   float: left;
-  margin: 5px 20px;
+  margin: 0px 10px 0 25px;
+  padding: 10px;
   cursor: pointer;
 }
 body div.content {
   width: 100%;
   min-height: 700px;
-  background-position: 40% 70%;
+  background-position: 0 50%;
   background-size: cover;
   background-image: url("../img/his_hers_original_scale.jpg");
   background-repeat: no-repeat;
-  position: relative;
+  padding: 10px;
 }
-body div.content div.introduction {
-  position: absolute;
-  top: 150px;
-  margin-left: 20px;
-}
-body div.content div.introduction div.countdown {
+body div.content div.countdown {
   font-family: "Just Me Again Down Here", Verdana, Geneva, sans-serif;
   font-size: 30px;
+  margin: 10px 0;
+  height: 40px;
+}
+body div.content div.countdown div {
+  float: left;
   color: white;
 }
-body div.content div.introduction div.countdown > div {
-  float: left;
-}
-body div.content div.introduction div.countdown > div > span {
-  line-height: 0.75em;
-}
-body div.content div.introduction div.countdown > div > div {
-  float: left;
-  text-align: center;
-  font-weight: bold;
-  color: black;
+body div.content div.countdown div.unit {
   background-color: white;
-  width: 40px;
-  height: 30px;
-  margin: 0 10px 0 12px;
-  line-height: 1em;
+  width: 45px;
+  height: 100%;
+  margin: 0 5px 0 5px;
+  padding: 0;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+body div.content div.countdown div.unit div {
+  text-align: center;
+  font-family: Arial;
+  width: 100%;
+}
+body div.content div.countdown div.unit div:nth-child(1) {
+  font-size: 24px;
+  color: black;
+}
+body div.content div.countdown div.unit div:nth-child(2) {
+  font-size: 10px;
+  color: gray;
 }
 body div.content div.sections {
-  float: left;
-  width: 40%;
+  max-width: 90%;
+  min-height: 500px;
   display: none;
   background-color: white;
+  padding: 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
 body div.content div.sections > div {
   display: none;
+}
+body div.content div.sections iframe {
+  opacity: 1;
 }
 body div.footer {
   width: 100%;

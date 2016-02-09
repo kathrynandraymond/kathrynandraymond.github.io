@@ -28,32 +28,41 @@ var main = {
 			if($(e.target).is('li')) {
 				var name = $(e.target).attr('name');
 				var subject = $('div.content div.sections > div[name*="' + name + '"]');
-				var bkgr = $('div.content div.sections');
 				if(subject && $(subject).is('div')) {
 					// Subject is found, we should show this.
-					if($(subject).css('display') == 'none') {
-						$('div.content div.sections > div').css('display','none');
-						if($(bkgr).css('display') == 'none') {
-							$(bkgr).css('width','700px').css('height','1px').css('display','block').animate({
-								height: '400px'
-							}, 1000, function() {
-								$(subject).css('display','block');
-							});
-						} else {
-							$(subject).css('display','block');
-						}
-					}
+					main.showSectionsBackground(subject);
 				} else {
-					$('div.content div.sections > div').css('display','none');
-					if($(bkgr).css('display') == 'block') {
-						$(bkgr).animate({
-							height: '1px'
-						}, 1000, function() {
-							$(bkgr).css('display','none');
-						});
-					}
+					main.hideSectionsBackground();
 				}
 			}
+		});
+	},
+
+	idealOpacity: 0.9,
+
+	showSectionsBackground : function(subject) {
+		var bkgr = $('div.content div.sections');
+		if($(bkgr).css('opacity') == main.idealOpacity && $(bkgr).css('display') == 'block') {
+			if($(subject).css('display') != 'block') {
+				$('div.content div.sections > div').css('display', 'none');
+				$(subject).css('display', 'block');
+			}
+		} else {
+			$('div.content div.sections > div').css('display', 'none');
+			$(bkgr).css('opacity', 0).css('display', 'block').animate({
+				opacity: main.idealOpacity
+			}, 1000, function() {
+				$(subject).css('display', 'block');
+			});
+		}
+	},
+
+	hideSectionsBackground : function() {
+		$('div.content div.sections > div').css('display','none');
+		$('div.content div.sections').css('opacity', main.idealOpacity).animate({
+			opacity: 0
+		}, 1000, function() {
+		
 		});
 	}
 };
@@ -104,29 +113,23 @@ $(document).ready(function() {
 				secondsRemaining += 60;
 			}
 
-			if(monthsRemaining > 1) {
-				$('.countdown .month').show();
-				if($.trim($('.countdown .month > div').html()) != monthsRemaining) {
-					$('.countdown .month > div').html(monthsRemaining);
+			var units = $('.countdown > div');
+			for(var i = 0, len = units.length; i < len; i++) {
+				var val = null;
+				if($(units[i]).hasClass('month')) {
+					val = monthsRemaining;
+				} else if($(units[i]).hasClass('day')) {
+					val = daysRemaining;
+				} else if($(units[i]).hasClass('hour')) {
+					val = hoursRemaining;
+				} else if($(units[i]).hasClass('minute')) {
+					val = minutesRemaining;
+				} else if($(units[i]).hasClass('second')) {
+					val = secondsRemaining;
 				}
-			} else {
-				$('.countdown .month').hide();
-			}
-
-			if($.trim($('.countdown .day > div').html()) != daysRemaining) {
-				$('.countdown .day > div').html(daysRemaining);
-			}
-
-			if($.trim($('.countdown .hour > div').html()) != hoursRemaining) {
-				$('.countdown .hour > div').html(hoursRemaining);
-			}
-
-			if($.trim($('.countdown .minute > div').html()) != minutesRemaining) {
-				$('.countdown .minute > div').html(minutesRemaining);
-			}
-
-			if($.trim($('.countdown .second > div').html()) != secondsRemaining) {
-				$('.countdown .second > div').html(secondsRemaining);
+				if(val != null) {
+					$(units[i]).find('div:first-child').html(val);
+				}
 			}
 		}
 	}, 1000);
