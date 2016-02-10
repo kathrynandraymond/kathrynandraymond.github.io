@@ -58,12 +58,15 @@ var main = {
 	},
 
 	hideSectionsBackground : function() {
+		var bkgr = $('div.content div.sections');
 		$('div.content div.sections > div').css('display','none');
-		$('div.content div.sections').css('opacity', main.idealOpacity).animate({
-			opacity: 0
-		}, 1000, function() {
-		
-		});
+		if($(bkgr).css('display') == 'block' || parseFloat($(bkgr).css('opacity')) > 0) {
+			$('div.content div.sections').animate({
+				opacity: 0
+			}, 1000, function() {
+				$(bkgr).css('display', 'none');
+			});
+		}
 	}
 };
 
@@ -72,46 +75,53 @@ $(document).ready(function() {
 	setInterval(function() {
 		var currently = new Date();
 		var secondsRemaining = main.secondsUntilEvent();
+
+		/********************************************************************************
+				2016/10/16 16:00:00
+			 -  YYYY/MM/DD HH:MI:SS
+			 ______________________
+			 ?
+		 ********************************************************************************/
+
 		if(secondsRemaining > 0) {
-			$('.countdown').show();
 			var secondsRemaining = main.timeOfEvent.getSeconds() - currently.getSeconds();
 			var minutesRemaining = main.timeOfEvent.getMinutes() - currently.getMinutes();
 			var hoursRemaining = main.timeOfEvent.getHours() - currently.getHours();
-			var monthsRemaining = main.timeOfEvent.getMonth() - currently.getMonth();
-			var yearDiff = main.timeOfEvent.getFullYear() > currently.getFullYear();
 			var daysRemaining = main.timeOfEvent.getDate() - currently.getDate();
-			if(yearDiff > 0) {
-				monthsRemaining += (12 * yearDiff);
-			}
-			if(daysRemaining < 0) {
-				monthsRemaining--;
-				if(currently.getMonth() == 0 || currently.getMonth() == 2 || currently.getMonth() == 4 || currently.getMonth() == 6 ||
-						currently.getMonth() == 7 || currently.getMonth() == 9 || currently.getMonth() == 11) {
-					daysRemaining += 31;
-				} else if(currently.getMonth() == 1) {
-					daysRemaining += 28;
-					if(currently.getYear() % 4 == 0) {
-						daysRemaining++;
-					}
-				} else {
-					daysRemaining += 30;
-				}
-			}
-
-			if(hoursRemaining < 0) {
-				daysRemaining--;
-				hoursRemaining += 24;
-			}
-
-			if(minutesRemaining < 0) {
-				hoursRemaining--;
-				minutesRemaining += 60;
-			}
+			var monthsRemaining = main.timeOfEvent.getMonth() - currently.getMonth();
 
 			if(secondsRemaining < 0) {
 				minutesRemaining--;
 				secondsRemaining += 60;
 			}
+			if(minutesRemaining < 0) {
+				hoursRemaining--;
+				minutesRemaining += 60;
+			}
+			if(hoursRemaining < 0) {
+				daysRemaining--;
+				hoursRemaining += 24;
+			}
+			if(daysRemaining < 0) {
+				monthsRemaining--;
+				if(currently.getMonth() == 1) {
+					daysRemaining += 28;
+					if(currently.getYear() % 4 == 0) {
+						daysRemaining++;
+					}					
+				} else if(currently.getMonth() == 3 || currently.getMonth() == 5 ||
+					currently.getMonth() == 8 || currently.getMonth() == 10 || currently.getMonth() == 12) {
+					daysRemaining += 30;
+				} else {
+					daysRemaining += 31;
+				}
+			}
+			var yearDiff = main.timeOfEvent.getFullYear() > currently.getFullYear();
+			if(yearDiff > 0) {
+				monthsRemaining += (12 * yearDiff);
+			}
+
+			$('.countdown').show();
 
 			var units = $('.countdown > div');
 			for(var i = 0, len = units.length; i < len; i++) {

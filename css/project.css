@@ -35,7 +35,6 @@ body {
 }
 body div.header {
   width: 100%;
-  height: 75px;
 }
 body div.header div.title {
   float: left;
@@ -79,8 +78,9 @@ body div.content {
 body div.content div.countdown {
   font-family: "Just Me Again Down Here", Verdana, Geneva, sans-serif;
   font-size: 30px;
-  margin: 10px 0;
+  margin: 10px 10px;
   height: 40px;
+  padding: 0;
 }
 body div.content div.countdown div {
   float: left;
@@ -90,7 +90,7 @@ body div.content div.countdown div.unit {
   background-color: white;
   width: 45px;
   height: 100%;
-  margin: 0 5px 0 5px;
+  margin: 0 10px 0 0px;
   padding: 0;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -111,7 +111,9 @@ body div.content div.countdown div.unit div:nth-child(2) {
 }
 body div.content div.sections {
   max-width: 90%;
+  min-width: 600px;
   min-height: 500px;
+  margin: 10px;
   display: none;
   background-color: white;
   padding: 10px;
