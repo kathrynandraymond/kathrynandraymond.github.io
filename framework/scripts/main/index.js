@@ -1,19 +1,17 @@
 
 var main = {
-	timeOfEvent : new Date("2016/10/16 16:00:00 GMT-0700 (PDT)"),
+	timeOfEvent : new Date('2016/10/16 16:00:00 GMT-0700 (PDT)'),
 
-	secondsUntilEvent : function() {
-		var curr = new Date();
-		if(curr.getTime() < main.timeOfEvent.getTime()) {
-			return Math.floor((main.timeOfEvent.getTime() - curr.getTime()) / 1000);
-		}
+	backgrounds : [
+		'img/his_hers_original_scale.jpg',
+		'img/kathryn_and_me_bigsur.jpg',
+		'img/rocky_mountain_natl_park.jpg'
+	],
 
-		return 0;
-	},
 
 	populateNavigation : function() {
-		var ul = $("div.header ul.sections");
-		var sections = $("div.content div.sections > div");
+		var ul = $('div.header ul.sections');
+		var sections = $('div.content div.sections > div');
 		for(var i = 0, len = sections.length; i < len; i++) {
 			var words = $(sections[i]).attr('name').split('_');
 			var capitalized = [];
@@ -74,7 +72,6 @@ $(document).ready(function() {
 	$('.countdown').hide();
 	setInterval(function() {
 		var currently = new Date();
-		var secondsRemaining = main.secondsUntilEvent();
 
 		/********************************************************************************
 				2016/10/16 16:00:00
@@ -83,7 +80,7 @@ $(document).ready(function() {
 			 ?
 		 ********************************************************************************/
 
-		if(secondsRemaining > 0) {
+		if(currently.getTime() < main.timeOfEvent.getTime()) {
 			var secondsRemaining = main.timeOfEvent.getSeconds() - currently.getSeconds();
 			var minutesRemaining = main.timeOfEvent.getMinutes() - currently.getMinutes();
 			var hoursRemaining = main.timeOfEvent.getHours() - currently.getHours();
@@ -145,4 +142,29 @@ $(document).ready(function() {
 	}, 1000);
 
 	main.populateNavigation();
+
+	var changeBackground = setInterval(function() {
+
+		var currentBkgr = $('.content').css('backgroundImage');
+		var currentIndex = -1;
+		for(var i = 0, len = main.backgrounds.length; i < len; i++) {
+			if(currentBkgr.indexOf(main.backgrounds[i]) > 0) {
+				currentIndex = i;
+				break;
+			}
+		}
+		var switchTo = currentIndex;
+		while(switchTo == currentIndex) {
+			switchTo = Math.floor(Math.random() * main.backgrounds.length);
+		}
+
+		var differentBackground = 'url("' + main.backgrounds[switchTo] + '")';
+		$('.content').animate({
+			backgroundImage: differentBackground
+		}, 2000 );
+	}, 8000);
+
+	if(main.backgrounds.length <= 1) {
+		cancelInterval(changeBackground);
+	}
 });

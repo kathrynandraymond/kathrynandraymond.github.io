@@ -3,6 +3,7 @@
 	<property name="build.dir" value="build" />
 	<property name="build.css.dir" value="${build.dir}/stylesheets" />
 	<property name="src.css.dir" value="${framework.dir}/stylesheets" />
+	<property name="src.scripts.dir" value="${framework.dir}/scripts" />
 	<property name="css.dir" value="css" />
 	<property name="scripts.dir" value="scripts" />
 
@@ -11,6 +12,14 @@
 			<fileset dir="${src.css.dir}" includes="elements.less" />
 			<fileset dir="${src.css.dir}" includes="*.less" excludes="elements.less" />
 			<fileset dir="${src.css.dir}" includes="*.css" />
+		</concat>
+	</target>
+
+	<target name="-concatenate-script-files">
+		<concat encoding="UTF-8" destfile="${scripts.dir}/main.js">
+			<fileset dir="${src.scripts.dir}/thirdparty" includes="**/*.js" />
+			<fileset dir="${src.scripts.dir}/main" includes="index.js" />
+			<fileset dir="${src.scripts.dir}/main" includes="**/*.js" excludes="index.js" />
 		</concat>
 	</target>
 
@@ -24,5 +33,6 @@
 	<target name="build-dependencies">
 		<antcall target="-concatenate-less-files" />
 		<antcall target="convert-less-css" />
+		<antcall target="-concatenate-script-files" />
 	</target>
 </project>
