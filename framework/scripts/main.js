@@ -1,30 +1,27 @@
-$(document).ready(function() {
-	$('.countdown').hide();
 
-	main.populateNavigation();
-
-	var changeBackground = setInterval(function() {
-
-		var currentBkgr = $('.content').css('backgroundImage');
-		var currentIndex = -1;
-		for(var i = 0, len = backgrounds.length; i < len; i++) {
-			if(currentBkgr.indexOf(backgrounds[i]) > 0) {
-				currentIndex = i;
-				break;
-			}
+var objectInitializer = function(parentElement) {
+	var wrappers = $(parentElement).find('[package]');
+	for(var i = 0, len = wrappers.length; i < len; i++) {
+		var packageName = $(wrappers[i]).attr('package');
+		var className = $(wrappers[i]).attr('class');
+		var objectName = packageName + '.' + className;
+		var object = null;
+		eval('object = ' + objectName + ';');
+		if(object != null) {
+			(function(wrapper, objectName) {
+				$.ajax({
+					url: 'templates/' + objectName.replace(/\./g,'/') + '.html'
+				}).done(function(dom) {
+					$(wrapper).html(dom);
+					objectInitializer($(wrapper));
+				});
+			})(wrappers[i], objectName);
 		}
-		var switchTo = currentIndex;
-		while(switchTo == currentIndex) {
-			switchTo = Math.floor(Math.random() * backgrounds.length);
-		}
-
-		var differentBackground = 'url("' + backgrounds[switchTo] + '")';
-		$('.content').animate({
-			backgroundImage: differentBackground
-		}, 2000 );
-	}, 8000);
-
-	if(backgrounds.length <= 1) {
-		cancelInterval(changeBackground);
 	}
+};
+
+$(document).ready(function() {
+	// Load modules and widgets
+	objectInitializer($('body'));
 });
+

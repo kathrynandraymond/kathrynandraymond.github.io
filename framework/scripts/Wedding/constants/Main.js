@@ -1,8 +1,8 @@
 
-wedding = wedding || {};
-wedding.constants = wedding.constants || {};
+var Wedding = Wedding || {};
+Wedding.constants = Wedding.constants || {};
 
-wedding.constants.Main = {
+Wedding.constants.Main = {
 	TIME_OF_EVENT : new Date('2016/10/16 16:00:00 GMT-0700 (PDT)'),
 	BACKGROUNDS : [
 		'img/his_hers_original_scale.jpg',

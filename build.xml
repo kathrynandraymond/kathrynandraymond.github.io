@@ -7,6 +7,9 @@
 	<property name="src.scripts.dir" value="${framework.dir}/scripts" />
 	<property name="css.dir" value="css" />
 	<property name="scripts.dir" value="scripts" />
+	<property name="templatesSrc" value="${framework.dir}/template" />
+	<property name="templatesDir" value="templates" />
+	<property name="neighbor.dir" value="/Users/raymondschan/projects/raymondschan.github.io" />
 
 	<target name="-concatenate-less-files">
 		<concat encoding="UTF-8" destfile="${build.css.dir}/main.less">
@@ -17,7 +20,7 @@
 	</target>
 
 	<target name="-concatenate-script-files-sub">
-		<concat encoding="UTF-8" destfile="${build.scripts.dir}/wedding.js">
+		<concat encoding="UTF-8" destfile="${build.scripts.dir}/Wedding.js">
 			<fileset dir="${src.scripts.dir}/Wedding/constants" includes="**/*.js" />
 			<fileset dir="${src.scripts.dir}/Wedding/widgets" includes="**/*.js" />
 			<fileset dir="${src.scripts.dir}/Wedding/modules" includes="**/*.js" />
@@ -30,9 +33,15 @@
 	<target name="-concatenate-script-files">
 		<concat encoding="UTF-8" destfile="${scripts.dir}/project.js">
 			<fileset dir="${build.scripts.dir}" includes="thirdParty.js" />
-			<fileset dir="${build.scripts.dir}" includes="wedding.js" />
+			<fileset dir="${build.scripts.dir}" includes="Wedding.js" />
 			<fileset dir="${src.scripts.dir}" includes="main.js" />
 		</concat>
+	</target>
+
+	<target name="-copy-template-files">
+		<copy todir="${templatesDir}" >  
+		    <fileset dir="${templatesSrc}" includes="**" />
+		</copy>
 	</target>
 
 	<target name="convert-less-css">
@@ -42,10 +51,30 @@
 		</exec>
 	</target>
 
+	<target name="-copy-to-raymondschan">
+		<copy todir="${neighbor.dir}/templates" >
+		    <fileset dir="templates" includes="**" />
+		</copy>
+		<copy todir="${neighbor.dir}/css" >
+		    <fileset dir="css" includes="**" />
+		</copy>
+		<copy todir="${neighbor.dir}/scripts" >
+		    <fileset dir="scripts" includes="**" />
+		</copy>
+		<copy todir="${neighbor.dir}/img" >
+			<fileset dir="img" includes="**" />
+		</copy>
+		<copy todir="${neighbor.dir}" >
+			<fileset dir="./" includes="index.html" />
+		</copy>
+	</target>
+
 	<target name="build-dependencies">
 		<antcall target="-concatenate-less-files" />
 		<antcall target="convert-less-css" />
 		<antcall target="-concatenate-script-files-sub" />
 		<antcall target="-concatenate-script-files" />
+		<antcall target="-copy-template-files" />
+		<antcall target="-copy-to-raymondschan" />
 	</target>
 </project>

@@ -1,7 +1,7 @@
-wedding = wedding || {};
-wedding.modules = wedding.modules || {};
+var Wedding = Wedding || {};
+Wedding.modules = Wedding.modules || {};
 
-wedding.modules.OurStory = function() {
+Wedding.modules.OurStory = function() {
 
 };
 

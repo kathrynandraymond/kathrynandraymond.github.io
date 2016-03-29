@@ -1,7 +1,7 @@
-wedding = wedding || {};
-wedding.widgets = wedding.widgets || {};
+var Wedding = Wedding || {};
+Wedding.widgets = Wedding.widgets || {};
 
-wedding.widgets.Countdown = function(timeOfEvent) {
+Wedding.widgets.Countdown = function(timeOfEvent) {
 
 	that = this;
 
