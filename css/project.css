@@ -28,54 +28,26 @@
   src: local('Just Me Again Down Here'), local('JustMeAgainDownHere'), url(https://fonts.gstatic.com/s/justmeagaindownhere/v8/sN06iTc9ITubLTgXoG-kcxBxoRNZkC32eJ50uEAK8oQC1LhKU8qFLLahJuQDJSaO.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
-body {
-  margin: 0px;
-  padding-top: 0px;
-  font-family: "Just Me Again Down Here", Verdana, Geneva, sans-serif;
-}
-body div.header {
+div.Content[package='Wedding.modules'] {
   width: 100%;
 }
-body div.header div.title {
-  float: left;
-}
-body div.header div.title div:nth-child(1) {
-  font-family: "Cedarville Cursive", cursive, Verdana, Geneva, sans-serif;
-  font-weight: 700;
-  font-size: 36px;
-  margin: 7px 20px 0 30px;
-  float: left;
-}
-body div.header div.title div:nth-child(2) {
-  font-size: 20px;
-  margin: 25px 0;
-  padding: 0 20px;
-  border: 1px solid gray;
-  border-width: 0 1px 0 1px;
-  float: left;
-}
-body div.header ul.sections {
-  float: left;
-  margin: 15px;
-}
-body div.header ul.sections li {
-  font-size: 18px;
-  list-style: none;
-  float: left;
-  margin: 0px 10px 0 25px;
-  padding: 10px;
-  cursor: pointer;
-}
-body div.content {
+div.Content[package='Wedding.modules'] div.OurStory[package='Wedding.modules'] {
   width: 100%;
-  min-height: 700px;
+}
+div.Content[package='Wedding.modules'] div.OurStory[package='Wedding.modules'] div.portrait {
+  margin: 0 auto;
+  min-width: 560px;
+  min-height: 417px;
+  width: 80%;
   background-position: 0 50%;
   background-size: cover;
   background-image: url("../img/his_hers_original_scale.jpg");
   background-repeat: no-repeat;
-  padding: 10px;
+  border-color: purple;
+  border-width: 5px;
+  border-style: solid;
 }
-body div.content div.sections {
+div.Content[package='Wedding.modules'] div.sections {
   max-width: 90%;
   min-width: 600px;
   min-height: 500px;
@@ -87,24 +59,86 @@ body div.content div.sections {
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
-body div.content div.sections > div {
+div.Content[package='Wedding.modules'] div.sections > div {
   display: none;
 }
-body div.content div.sections iframe {
+div.Content[package='Wedding.modules'] div.sections iframe {
   opacity: 1;
 }
-body div.footer {
+div.Footer[package='Wedding.modules'] {
   width: 100%;
   height: 50px;
 }
-body div.footer div.copyright {
+div.Footer[package='Wedding.modules'] div.copyright {
   text-align: center;
   vertical-align: middle;
   line-height: 3.5em;
 }
-.header,
-.footer {
-  background-color: purple;
+div.Header[package='Wedding.modules'] {
+  color: purple;
+  width: 100%;
+}
+div.Header[package='Wedding.modules'] div.title {
+  float: left;
+}
+div.Header[package='Wedding.modules'] div.title div:nth-child(1) {
+  font-family: "Cedarville Cursive", cursive, Verdana, Geneva, sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  margin: 7px 20px 0 30px;
+  float: left;
+}
+div.Header[package='Wedding.modules'] div.title div:nth-child(2) {
+  font-size: 20px;
+  margin: 25px 0;
+  padding: 0 20px;
+  border: 1px solid gray;
+  border-width: 0 1px 0 1px;
+  float: left;
+}
+div.Header[package='Wedding.modules'] ul.sections {
+  float: left;
+  margin: 15px;
+}
+div.Header[package='Wedding.modules'] ul.sections li {
+  font-size: 18px;
+  list-style: none;
+  float: left;
+  margin: 0px 10px 0 25px;
+  padding: 10px;
+  cursor: pointer;
+}
+div.countdown {
+  font-family: "Just Me Again Down Here", Verdana, Geneva, sans-serif;
+  font-size: 30px;
+  margin: 10px 10px;
+  height: 40px;
+  padding: 0;
+}
+div.countdown div {
+  float: left;
   color: white;
-  font-size: 14px;
+}
+div.countdown div.unit {
+  background-color: white;
+  width: 45px;
+  height: 100%;
+  margin: 0 10px 0 0px;
+  padding: 0;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+div.countdown div.unit div {
+  text-align: center;
+  font-family: Arial;
+  width: 100%;
+}
+div.countdown div.unit div:nth-child(1) {
+  font-size: 24px;
+  color: black;
+}
+div.countdown div.unit div:nth-child(2) {
+  font-size: 10px;
+  color: gray;
 }

@@ -9,13 +9,14 @@
 	<property name="scripts.dir" value="scripts" />
 	<property name="templatesSrc" value="${framework.dir}/template" />
 	<property name="templatesDir" value="templates" />
+	<property name="dataDir" value="data" />
 	<property name="neighbor.dir" value="/Users/raymondschan/projects/raymondschan.github.io" />
 
 	<target name="-concatenate-less-files">
 		<concat encoding="UTF-8" destfile="${build.css.dir}/main.less">
-			<fileset dir="${src.css.dir}" includes="elements.less" />
-			<fileset dir="${src.css.dir}" includes="*.less" excludes="elements.less" />
-			<fileset dir="${src.css.dir}" includes="*.css" />
+			<fileset dir="${src.css.dir}/thirdparty" />
+			<fileset dir="${src.css.dir}" includes="**/*.less" excludes="thirdparty/*" />
+			<fileset dir="${src.css.dir}" includes="**/*.css" />
 		</concat>
 	</target>
 
@@ -42,6 +43,9 @@
 		<copy todir="${templatesDir}" >  
 		    <fileset dir="${templatesSrc}" includes="**" />
 		</copy>
+		<copy todir="${dataDir}">
+			<fileset dir="${framework.dir}/data" includes="**" />
+		</copy>
 	</target>
 
 	<target name="convert-less-css">
@@ -66,6 +70,9 @@
 		</copy>
 		<copy todir="${neighbor.dir}" >
 			<fileset dir="./" includes="index.html" />
+		</copy>
+		<copy todir="${neighbor.dir}/data" >
+			<fileset dir="data" includes="**" />
 		</copy>
 	</target>
 
