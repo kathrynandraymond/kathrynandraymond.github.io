@@ -17,11 +17,16 @@ Wedding.constants.Main = {
 var Wedding = Wedding || {};
 Wedding.widgets = Wedding.widgets || {};
 
-Wedding.widgets.Countdown = function(timeOfEvent) {
+Wedding.widgets.Countdown = function() {
+	var that = this;
 
-	that = this;
+	this.init = function(parentElement) {
+		var timeOfEvent = Wedding.constants.Main.TIME_OF_EVENT;
 
-	that.init = function() {
+		that.initCountdown(parentElement, timeOfEvent);
+	};
+
+	this.initCountdown = function(parentElement, timeOfEvent) {
 		setInterval(function() {
 			var currently = new Date();
 	
@@ -72,7 +77,7 @@ Wedding.widgets.Countdown = function(timeOfEvent) {
 	
 				$('.countdown').show();
 	
-				var units = $('.countdown > div');
+				var units = $(parentElement).find('div.unit');
 				for(var i = 0, len = units.length; i < len; i++) {
 					var val = null;
 					if($(units[i]).hasClass('month')) {
@@ -98,42 +103,65 @@ var Wedding = Wedding || {};
 Wedding.modules = Wedding.modules || {};
 
 Wedding.modules.Content = function() {
+	var that = this;
 
+	this.init = function(parentElement) {
+	
+	};
 };
 
 var Wedding = Wedding || {};
 Wedding.modules = Wedding.modules || {};
 
 Wedding.modules.EventInformation = function() {
+	var that = this;
 
+	this.init = function(parentElement) {
+	
+	};
 };
 
 var Wedding = Wedding || {};
 Wedding.modules = Wedding.modules || {};
 
 Wedding.modules.Footer = function() {
+	var that = this;
 
+	this.init = function(parentElement) {
+	
+	};
 };
 
 var Wedding = Wedding || {};
 Wedding.modules = Wedding.modules || {};
 
 Wedding.modules.Header = function() {
+	var that = this;
 
+	this.init = function(parentElement) {
+	};
 };
 
 var Wedding = Wedding || {};
 Wedding.modules = Wedding.modules || {};
 
 Wedding.modules.OurStory = function() {
+	var that = this;
 
+	this.init = function(parentElement) {
+	
+	};
 };
 
 var Wedding = Wedding || {};
 Wedding.modules = Wedding.modules || {};
 
 Wedding.modules.TheWeddingParty = function() {
+	var that = this;
 
+	this.init = function(parentElement) {
+	
+	};
 };
 
 
@@ -141,19 +169,19 @@ var objectInitializer = function(parentElement) {
 	var wrappers = $(parentElement).find('[package]');
 	for(var i = 0, len = wrappers.length; i < len; i++) {
 		var packageName = $(wrappers[i]).attr('package');
-		var className = $(wrappers[i]).attr('class');
-		var objectName = packageName + '.' + className;
-		var object = null;
-		eval('object = ' + objectName + ';');
-		if(object != null) {
-			(function(wrapper, objectName) {
+		var packageClass = packageName + '.' + $(wrappers[i]).attr('class');
+		var instance = null;
+		eval('instance = new ' + packageClass + '();');
+		if(instance != null) {
+			(function(wrapper, instance, packageClass) {
 				$.ajax({
-					url: 'templates/' + objectName.replace(/\./g,'/') + '.html'
+					url: 'templates/' + packageClass.replace(/\./g,'/') + '.html'
 				}).done(function(dom) {
 					$(wrapper).html(dom);
 					objectInitializer($(wrapper));
+					instance.init(wrapper);
 				});
-			})(wrappers[i], objectName);
+			})(wrappers[i], instance, packageClass);
 		}
 	}
 };

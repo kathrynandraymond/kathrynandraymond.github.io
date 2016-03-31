@@ -28,24 +28,18 @@
   src: local('Just Me Again Down Here'), local('JustMeAgainDownHere'), url(https://fonts.gstatic.com/s/justmeagaindownhere/v8/sN06iTc9ITubLTgXoG-kcxBxoRNZkC32eJ50uEAK8oQC1LhKU8qFLLahJuQDJSaO.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
+body div.website {
+  margin: 0 auto;
+  min-width: 800px;
+  max-width: 1200px;
+}
+div[package='Wedding.modules'] h2 {
+  color: #614051;
+  font-family: "Cedarville Cursive", cursive, Verdana, Geneva, sans-serif;
+  font-size: 24px;
+}
 div.Content[package='Wedding.modules'] {
   width: 100%;
-}
-div.Content[package='Wedding.modules'] div.OurStory[package='Wedding.modules'] {
-  width: 100%;
-}
-div.Content[package='Wedding.modules'] div.OurStory[package='Wedding.modules'] div.portrait {
-  margin: 0 auto;
-  min-width: 560px;
-  min-height: 417px;
-  width: 80%;
-  background-position: 0 50%;
-  background-size: cover;
-  background-image: url("../img/his_hers_original_scale.jpg");
-  background-repeat: no-repeat;
-  border-color: purple;
-  border-width: 5px;
-  border-style: solid;
 }
 div.Content[package='Wedding.modules'] div.sections {
   max-width: 90%;
@@ -65,6 +59,47 @@ div.Content[package='Wedding.modules'] div.sections > div {
 div.Content[package='Wedding.modules'] div.sections iframe {
   opacity: 1;
 }
+div[package='Wedding.modules'].EventInformation .information {
+  color: #614051;
+}
+div[package='Wedding.modules'].EventInformation .information div.widget {
+  margin-bottom: 35px;
+}
+div[package='Wedding.modules'].EventInformation .information div.widget div[package='Wedding.widgets'].Countdown {
+  font-family: "Just Me Again Down Here", Verdana, Geneva, sans-serif;
+  font-size: 30px;
+  height: 40px;
+  padding: 0;
+}
+div[package='Wedding.modules'].EventInformation .information div.widget div[package='Wedding.widgets'].Countdown div {
+  float: left;
+  color: white;
+}
+div[package='Wedding.modules'].EventInformation .information div.widget div[package='Wedding.widgets'].Countdown div.unit {
+  background-color: #614051;
+  width: 45px;
+  height: 100%;
+  margin: 0 10px 0 0px;
+  padding: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+div[package='Wedding.modules'].EventInformation .information div.widget div[package='Wedding.widgets'].Countdown div.unit div {
+  text-align: center;
+  font-family: Arial;
+  width: 100%;
+  color: white;
+}
+div[package='Wedding.modules'].EventInformation .information div.widget div[package='Wedding.widgets'].Countdown div.unit div:nth-child(1) {
+  font-size: 24px;
+}
+div[package='Wedding.modules'].EventInformation .information div.widget div[package='Wedding.widgets'].Countdown div.unit div:nth-child(2) {
+  font-size: 10px;
+}
+div[package='Wedding.modules'].EventInformation .information div.location h4 {
+  margin-bottom: 5px;
+}
 div.Footer[package='Wedding.modules'] {
   width: 100%;
   height: 50px;
@@ -75,7 +110,8 @@ div.Footer[package='Wedding.modules'] div.copyright {
   line-height: 3.5em;
 }
 div.Header[package='Wedding.modules'] {
-  color: purple;
+  background-color: #614051;
+  color: white;
   width: 100%;
 }
 div.Header[package='Wedding.modules'] div.title {
@@ -108,37 +144,18 @@ div.Header[package='Wedding.modules'] ul.sections li {
   padding: 10px;
   cursor: pointer;
 }
-div.countdown {
-  font-family: "Just Me Again Down Here", Verdana, Geneva, sans-serif;
-  font-size: 30px;
-  margin: 10px 10px;
-  height: 40px;
-  padding: 0;
-}
-div.countdown div {
-  float: left;
-  color: white;
-}
-div.countdown div.unit {
-  background-color: white;
-  width: 45px;
-  height: 100%;
-  margin: 0 10px 0 0px;
-  padding: 0;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}
-div.countdown div.unit div {
-  text-align: center;
-  font-family: Arial;
+div.OurStory[package='Wedding.modules'] {
   width: 100%;
 }
-div.countdown div.unit div:nth-child(1) {
-  font-size: 24px;
-  color: black;
+div.OurStory[package='Wedding.modules'] div.portrait {
+  margin: 0 auto;
+  min-height: 417px;
+  width: 100%;
+  background-position: 0 50%;
+  background-size: cover;
+  background-image: url("../img/his_hers_original_scale.jpg");
+  background-repeat: no-repeat;
 }
-div.countdown div.unit div:nth-child(2) {
-  font-size: 10px;
-  color: gray;
+div.OurStory[package='Wedding.modules'] .story {
+  color: #614051;
 }
