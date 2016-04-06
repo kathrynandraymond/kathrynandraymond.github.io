@@ -356,9 +356,8 @@ Wedding.modules.TheWeddingParty = function() {
 									imgHeight = desiredDimension;
 								}
 							}
-							$(shownImg).removeClass('show');
-							$(pictureFrame).width(imgWidth).height(imgHeight).css('background-image','url("' + $(shownImg).attr('src') + '")')
-						}, 500);
+							$(shownImg).css('width', imgWidth + 'px').css('height', imgHeight + 'px');
+						}, 300);
 		
 					})(img, pictureFrame);
 				}

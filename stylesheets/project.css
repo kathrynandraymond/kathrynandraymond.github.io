@@ -209,19 +209,58 @@ div[package='Wedding.modules'].TheWeddingParty .cannotSeeThis {
 .person .photo img {
   display: none;
 }
-.pageModal .container .person .photo {
+.pageModal .containing-box {
+  background-color: white;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+.pageModal .containing-box .container {
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+}
+.pageModal .containing-box .container .person {
+  max-width: 900px;
+  height: auto;
+}
+.pageModal .containing-box .container .person .photo {
   float: left;
-  min-width: 50px;
-  min-height: 50px;
-  max-width: 600px;
+  min-width: 200px;
+  min-height: 200px;
+  max-width: 500px;
   max-height: 500px;
 }
-.pageModal .container .person .photo img.show {
+.pageModal .containing-box .container .person .photo img.show {
   display: inline;
 }
-.pageModal .container .person .info {
+.pageModal .containing-box .container .person .info {
   float: left;
-  color: white;
+  width: 400px;
+  height: 100%;
+}
+.pageModal .containing-box .container .person .info div {
+  margin: 5px;
+}
+.pageModal .containing-box .container .person .info .name {
+  width: 100%;
+  color: #614051;
+  font-size: 18px;
+}
+.pageModal .containing-box .container .person .info .role {
+  color: #614051;
+  font-size: 14px;
+}
+.pageModal .containing-box .container .person .info .about {
+  width: 100%;
+  margin: 10px;
+  max-width: 480px;
+  font-size: 14px;
+}
+.pageModal .containing-box .container .person:after {
+  content: " ";
+  display: block;
+  clear: both;
 }
 .pageModal {
   position: absolute;
@@ -230,22 +269,30 @@ div[package='Wedding.modules'].TheWeddingParty .cannotSeeThis {
   height: 100%;
   background-color: black;
   display: none;
+  vertical-align: middle;
 }
 .pageModal .containing-box {
+  vertical-align: middle;
+  width: auto;
   margin: 0 auto;
-  min-width: 200px;
-  min-height: 200px;
   position: fixed;
 }
 .pageModal .containing-box .container {
+  float: left;
   color: white;
 }
 .pageModal .containing-box .exit {
+  float: right;
   background-image: url('/img/assets/close_button.png');
   background-repeat: no-repeat;
   width: 50px;
   height: 50px;
   cursor: pointer;
+}
+.pageModal .containing-box:after {
+  content: " ";
+  display: block;
+  clear: both;
 }
 .pageModal.show {
   display: block;
