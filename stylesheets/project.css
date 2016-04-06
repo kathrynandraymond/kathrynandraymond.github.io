@@ -177,7 +177,8 @@ div.OurStory[package='Wedding.modules'] div.portrait {
 div.OurStory[package='Wedding.modules'] .story {
   color: #614051;
 }
-div[package='Wedding.modules'].TheWeddingParty .gallery .person[enlarged='false'] {
+div[package='Wedding.modules'].TheWeddingParty .gallery .person {
+  cursor: pointer;
   float: left;
   margin: 5px;
   background-color: #614051;
@@ -187,30 +188,65 @@ div[package='Wedding.modules'].TheWeddingParty .gallery .person[enlarged='false'
   padding: 3px;
   color: white;
 }
-div[package='Wedding.modules'].TheWeddingParty .gallery .person[enlarged='false'] .photo.thumbnail {
+div[package='Wedding.modules'].TheWeddingParty .gallery .person .photo {
   width: 200px;
   height: 200px;
 }
-div[package='Wedding.modules'].TheWeddingParty .gallery .person[enlarged='false'] .photo.thumbnail.not-available {
+div[package='Wedding.modules'].TheWeddingParty .gallery .person .photo img {
+  display: none;
+}
+div[package='Wedding.modules'].TheWeddingParty .gallery .person .about {
+  display: none;
+}
+div[package='Wedding.modules'].TheWeddingParty .cannotSeeThis {
+  display: none;
+}
+.person .photo {
   background-image: url('http://www.solarworlds.co.uk/photo/photos/20080222_PurpleOrchids_700x700med.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
-div[package='Wedding.modules'].TheWeddingParty .gallery .person[enlarged='false'] .photo.enlarged {
+.person .photo img {
   display: none;
 }
-div[package='Wedding.modules'].TheWeddingParty .gallery .person[enlarged='false'] .about {
+.pageModal .container .person .photo {
+  float: left;
+  min-width: 50px;
+  min-height: 50px;
+  max-width: 600px;
+  max-height: 500px;
+}
+.pageModal .container .person .photo img.show {
+  display: inline;
+}
+.pageModal .container .person .info {
+  float: left;
+  color: white;
+}
+.pageModal {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: black;
   display: none;
 }
-div[package='Wedding.modules'].TheWeddingParty .gallery .person[enlarged='true'] .photo.thumbnail {
-  display: none;
+.pageModal .containing-box {
+  margin: 0 auto;
+  min-width: 200px;
+  min-height: 200px;
+  position: fixed;
 }
-div[package='Wedding.modules'].TheWeddingParty .gallery .person[enlarged='true'] .photo.enlarged {
+.pageModal .containing-box .container {
+  color: white;
+}
+.pageModal .containing-box .exit {
+  background-image: url('/img/assets/close_button.png');
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+.pageModal.show {
   display: block;
-}
-div[package='Wedding.modules'].TheWeddingParty .gallery .person[enlarged='true'] .about {
-  display: block;
-}
-div[package='Wedding.modules'].TheWeddingParty .cannotSeeThis {
-  display: none;
 }
