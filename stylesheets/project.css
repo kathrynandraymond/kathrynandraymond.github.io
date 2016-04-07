@@ -46,8 +46,7 @@
 }
 body div.website {
   margin: 0 auto;
-  min-width: 800px;
-  max-width: 1200px;
+  width: 850px;
 }
 div[package='Wedding.modules'] h2 {
   color: #614051;
