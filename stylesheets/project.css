@@ -46,7 +46,29 @@
 }
 body div.website {
   margin: 0 auto;
-  width: 850px;
+  width: 900px;
+}
+body div.website .portrait {
+  margin: 0 auto;
+  width: 100%;
+  height: 275px;
+  background-position: 0 50%;
+  background-size: cover;
+  background-image: url("../img/his_hers_original_scale.jpg");
+  background-repeat: no-repeat;
+  color: white;
+}
+body div.website .portrait div:nth-child(1) {
+  font-family: 'Great Vibes', cursive;
+  font-weight: 700;
+  font-size: 36px;
+  text-align: center;
+  padding-top: 100px;
+}
+body div.website .portrait div:nth-child(2) {
+  font-size: 20px;
+  text-align: center;
+  padding: 0 20px;
 }
 div[package='Wedding.modules'] h2 {
   color: #614051;
@@ -128,30 +150,7 @@ div.Footer[package='Wedding.modules'] div.copyright {
 }
 div.Header[package='Wedding.modules'] {
   background-color: #614051;
-  color: white;
   width: 100%;
-}
-div.Header[package='Wedding.modules'] div.title {
-  float: left;
-}
-div.Header[package='Wedding.modules'] div.title div:nth-child(1) {
-  font-family: 'Great Vibes', cursive;
-  font-weight: 700;
-  font-size: 36px;
-  margin: 7px 20px 0 30px;
-  float: left;
-}
-div.Header[package='Wedding.modules'] div.title div:nth-child(2) {
-  font-size: 20px;
-  margin: 25px 0;
-  padding: 0 20px;
-  border: 1px solid gray;
-  border-width: 0 1px 0 1px;
-  float: left;
-}
-div.Header[package='Wedding.modules'] ul.sections {
-  float: left;
-  margin: 15px;
 }
 div.Header[package='Wedding.modules'] ul.sections li {
   font-size: 18px;
@@ -160,18 +159,16 @@ div.Header[package='Wedding.modules'] ul.sections li {
   margin: 0px 10px 0 25px;
   padding: 10px;
   cursor: pointer;
+  color: white;
+  font-family: 'Great Vibes', cursive;
+}
+div.Header:after {
+  content: " ";
+  clear: both;
+  display: block;
 }
 div.OurStory[package='Wedding.modules'] {
   width: 100%;
-}
-div.OurStory[package='Wedding.modules'] div.portrait {
-  margin: 0 auto;
-  min-height: 417px;
-  width: 100%;
-  background-position: 0 50%;
-  background-size: cover;
-  background-image: url("../img/his_hers_original_scale.jpg");
-  background-repeat: no-repeat;
 }
 div.OurStory[package='Wedding.modules'] .story {
   color: #614051;
@@ -208,79 +205,71 @@ div[package='Wedding.modules'].TheWeddingParty .cannotSeeThis {
 .person .photo img {
   display: none;
 }
-.pageModal .containing-box {
+.pageModal.containing-box {
   background-color: white;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
 }
-.pageModal .containing-box .container {
-  width: auto;
-  height: auto;
-  margin: 0 auto;
-}
-.pageModal .containing-box .container .person {
-  max-width: 900px;
-  height: auto;
-}
-.pageModal .containing-box .container .person .photo {
+.pageModal.containing-box .container .person .photo {
   float: left;
   min-width: 200px;
   min-height: 200px;
   max-width: 500px;
   max-height: 500px;
+  margin: 10px;
 }
-.pageModal .containing-box .container .person .photo img.show {
+.pageModal.containing-box .container .person .photo img.show {
   display: inline;
 }
-.pageModal .containing-box .container .person .info {
+.pageModal.containing-box .container .person .info {
   float: left;
   width: 400px;
   height: 100%;
 }
-.pageModal .containing-box .container .person .info div {
-  margin: 5px;
+.pageModal.containing-box .container .person .info div {
+  margin: 10px;
 }
-.pageModal .containing-box .container .person .info .name {
+.pageModal.containing-box .container .person .info .name {
   width: 100%;
   color: #614051;
   font-size: 18px;
 }
-.pageModal .containing-box .container .person .info .role {
+.pageModal.containing-box .container .person .info .role {
   color: #614051;
   font-size: 14px;
 }
-.pageModal .containing-box .container .person .info .about {
+.pageModal.containing-box .container .person .info .about {
   width: 100%;
-  margin: 10px;
   max-width: 480px;
   font-size: 14px;
 }
-.pageModal .containing-box .container .person:after {
+.pageModal.containing-box .container .person:after {
   content: " ";
   display: block;
   clear: both;
 }
-.pageModal {
-  position: absolute;
+.pageModal.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 1;
   width: 100%;
   height: 100%;
   background-color: black;
+  opacity: 0.5;
   display: none;
-  vertical-align: middle;
 }
-.pageModal .containing-box {
-  vertical-align: middle;
-  width: auto;
-  margin: 0 auto;
+.pageModal.containing-box {
   position: fixed;
+  left: 50%;
+  margin-left: -37.5%;
+  z-index: 2;
 }
-.pageModal .containing-box .container {
+.pageModal.containing-box .container {
   float: left;
-  color: white;
 }
-.pageModal .containing-box .exit {
+.pageModal.containing-box .exit {
   float: right;
   background-image: url('/img/assets/close_button.png');
   background-repeat: no-repeat;
@@ -288,10 +277,13 @@ div[package='Wedding.modules'].TheWeddingParty .cannotSeeThis {
   height: 50px;
   cursor: pointer;
 }
-.pageModal .containing-box:after {
+.pageModal.containing-box:after {
   content: " ";
   display: block;
   clear: both;
+}
+.pageModal {
+  display: none;
 }
 .pageModal.show {
   display: block;

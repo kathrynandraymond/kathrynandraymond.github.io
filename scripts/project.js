@@ -7,15 +7,15 @@ var PageModal = function() {
 
 	var that = this;
 
-	var wrapper = $('.pageModal');
+	var wrapper = $('.pageModal.overlay');
 
 	this.emptyModal = function() {
-		var modalContainer = $(wrapper).find('.container');
+		var modalContainer = $('.pageModal.containing-box').find('.container');
 		$(modalContainer).empty();
 	};
 	
 	this.loadIntoModal = function(content, automaticallyShow) {
-		var modalContainer = $(wrapper).find('.container');
+		var modalContainer = $('.pageModal.containing-box').find('.container');
 		$(content).appendTo(modalContainer);
 		if(automaticallyShow === true) {
 			showModal();
@@ -23,19 +23,15 @@ var PageModal = function() {
 	};
 	
 	this.showModal = function() {
-		var modal = $(wrapper).addClass('show');
-		var body = $('body');
-		$(modal).width($(body).width()).height($(body).height());
+		$('.pageModal').addClass('show');
 	};
 	
 	this.hideModal = function() {
-		var modal = $(wrapper).removeClass('show');
-		var body = $('body');
-		$(modal).width(0).height(0);
+		$('.pageModal').removeClass('show');
 	};
 
 	this.init = function() {
-		$(wrapper).find('.exit').click(function(event) {
+		$('.pageModal.containing-box').find('.exit').click(function(event) {
 			that.hideModal();
 			that.emptyModal();
 		});
@@ -53,7 +49,7 @@ var data = {
 	"name": "Christy Ng",
 	"type":"Maid of Honor",
 	"imgs":[
-		"christyNg_01.jpg",
+		"christyNg_01.png",
 		"christyNg_02.png",
 		"christyNg_03.png"
 	],
@@ -245,7 +241,6 @@ Wedding.modules.Content = function() {
 	var that = this;
 
 	this.init = function(parentElement) {
-	
 	};
 };
 
@@ -276,8 +271,46 @@ Wedding.modules = Wedding.modules || {};
 
 Wedding.modules.Header = function() {
 	var that = this;
+	this.wrapper = null;
 
 	this.init = function(parentElement) {
+		that.wrapper = parentElement;
+		setTimeout(findContent, 200);
+	};
+
+	this.addSections = function(container) {
+		var list = $(that.wrapper).find('ul.sections');
+		var title = $(container).find('h2');
+		var anchor = 'anchor-' + Math.random();
+		$(container).attr('anchor', anchor);
+		var item = $('<li/>');
+		$(item).attr('ref',anchor).html($(title).html()).appendTo(list);
+	};
+
+	var findContent = function() {
+		var contentsContents = $('div[package="Wedding.modules"].Content').find(
+				'div[package="Wedding.modules"]');
+		if(contentsContents.length > 0) {
+			for(var i = 0, len = contentsContents.length; i < len; i++) {
+				that.addSections(contentsContents[i]);
+			}
+		}
+
+		$(that.wrapper).find('ul.sections').click(clickSections);
+	}
+
+	var clickSections = function(event) {
+		var reference = $(event.target).attr(ref);
+
+		if(reference != null) {
+			var target = $('div[package="Wedding.modules"].Content').find('div[anchor="' + reference + '"]');
+	
+			if(target != null) {
+				$('html,body').animate({
+					 scrollTop: $(target).offset().top
+				});
+			}
+		}
 	};
 };
 
@@ -328,10 +361,11 @@ Wedding.modules.TheWeddingParty = function() {
 				pageModal.emptyModal();
 				var enlargedPerson = addPersonToTemplate(person, $('.cannotSeeThis .person[enlarged="true"]'));
 				pageModal.loadIntoModal($(enlargedPerson), false);
-				pageModal.showModal();
 
 				var pictureFrame = $(enlargedPerson).find('.photo');
 				var pics = $(pictureFrame).find('img');
+
+				var settleFunc = null;
 				if(pics != null && pics.length > 0) {
 					var img = $(pics[Math.floor(Math.random() * pics.length)]);
 					$(img).addClass('show');
@@ -357,10 +391,11 @@ Wedding.modules.TheWeddingParty = function() {
 								}
 							}
 							$(shownImg).css('width', imgWidth + 'px').css('height', imgHeight + 'px');
-						}, 300);
+						}, 200);
 		
 					})(img, pictureFrame);
 				}
+				pageModal.showModal();
 			}
 		});
 	};
@@ -387,6 +422,7 @@ Wedding.modules.TheWeddingParty = function() {
 	}
 };
 
+var initializedObjects = {};
 
 var objectInitializer = function(parentElement) {
 	var wrappers = $(parentElement).find('[package]');
@@ -405,6 +441,7 @@ var objectInitializer = function(parentElement) {
 					instance.init(wrapper);
 				});
 			})(wrappers[i], instance, packageClass);
+			initializedObjects[packageClass] = instance;
 		}
 	}
 };
