@@ -357,7 +357,7 @@ Wedding.modules.TheWeddingParty = function() {
 			}
 		}
 		for(i = 0, len = people.groomsmen.length; i < len; i++) {
-			if(people.bridesmaids[i].name == name) {
+			if(people.groomsmen[i].name == name) {
 				return people.groomsmen[i];
 			}
 		}
