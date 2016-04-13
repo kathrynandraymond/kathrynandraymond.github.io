@@ -50,10 +50,10 @@ var data = {
 	"type":"Maid of Honor",
 	"imgs":[
 		"christyNg_01.png",
-		"christyNg_02.png",
-		"christyNg_03.png"
+		"christyNg_02.png"
 	],
 	"thumbnails": [
+		"christyNg01_thumbnail.png"
 	],
 	"about":[
 		"My little sister Christy is a big ball of energy, very friendly, and always willing to help a friend or family. This is probably why she works at Sales Coordinator at Silver Cloud. I love her even though we don't always share the same interest but it helps she eats the chicken feet while I help eat the leg and thigh. =) She is my friend, who I can call to complain or celebrate about anything and count on her support, strength and laughter. "
@@ -107,6 +107,10 @@ data.people.push({
 	"name": "Eva Lee",
 	"type":"Bridesmaid",
 	"imgs":[
+		"eva_01.jpg"
+	],
+	"thumbnails":[
+		"eva_01_thumb.jpg"
 	],
 	"about":[
 		"Eva and I met at a friend's home as we tried to make egg tarts (dan tat). This was the first indication that Eva was a true foodie - searching for the best places to eat and try making the food as well. Eva worked at the same company as me so she understood my up and down work experiences. We've travelled to many places - Oregon lakes, Santa Barbara beaches, rocking climbing up, shopping & eating in NYC. Eva is a great friend, listener, seeker of yummy food, travel buddy and planner of many road trips and gatherings. " 
