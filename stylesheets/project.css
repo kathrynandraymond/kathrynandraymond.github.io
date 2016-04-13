@@ -49,19 +49,32 @@
   font-family: 'Texgyrechorus';
   src: url("/fonts/texgyrechorus-mediumitalic.otf") format("opentype");
 }
+@font-face {
+  font-family: 'Handlee';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Handlee Regular'), local('Handlee-Regular'), url(https://fonts.gstatic.com/s/handlee/v5/juOaTHBX9N7mCQYS68pw6QLUuEpTyoUstqEm5AMlJo4.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+@handlee-family {
+  font-family: 'Handlee', helvetica, arial, sans-serif;
+}
+.default-body-font {
+  font-family: 'PT Sans', helvetica, arial, sans-serif;
+  font-size: 13pt;
+}
 .default-section-titles {
-  font-family: 'Texgyrechorus', helvetica, arial, sans-serif;
+  font-family: 'Great Vibes', cursive;
   font-size: 24pt;
   color: #614051;
 }
 body div.website {
-  margin: 0 auto;
+  margin: 65px auto;
   width: 900px;
-  font-family: helvetica, arial, sans-serif;
+  font-family: 'PT Sans', helvetica, arial, sans-serif;
   font-size: 13pt;
 }
 body div.website .portrait {
-  margin: 0 auto;
   width: 100%;
   height: 275px;
   background-position: 0 50%;
@@ -84,12 +97,66 @@ body div.website .portrait div:nth-child(2) {
   padding: 0 20px;
 }
 div[package='Wedding.modules'] h2 {
-  font-family: 'Texgyrechorus', helvetica, arial, sans-serif;
+  font-family: 'Great Vibes', cursive;
   font-size: 24pt;
   color: #614051;
 }
+.clearFloat {
+  content: " ";
+  display: block;
+  clear: both;
+}
 div.Content[package='Wedding.modules'] {
   width: 100%;
+}
+div.Content[package='Wedding.modules'] div.widget {
+  width: 100%;
+  margin: 10px;
+  margin-bottom: 35px;
+}
+div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets'].Countdown {
+  font-size: 30px;
+  height: 40px;
+  padding: 0;
+  width: 550px;
+  margin: 0 auto;
+}
+div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets'].Countdown div {
+  float: left;
+  color: #614051;
+}
+div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets'].Countdown div.unit {
+  background-color: #614051;
+  width: 45px;
+  height: 100%;
+  margin: 0 10px 0 0px;
+  padding: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets'].Countdown div.unit div {
+  text-align: center;
+  width: 100%;
+  color: white;
+}
+div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets'].Countdown div.unit div:nth-child(1) {
+  font-family: 'Texgyrechorus', helvetica, arial, sans-serif;
+  font-size: 24px;
+}
+div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets'].Countdown div.unit div:nth-child(2) {
+  font-family: 'PT Sans', helvetica, arial, sans-serif;
+  font-size: 13pt;
+  font-size: 8pt;
+}
+div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets'].Countdown > div:last-child {
+  font-size: 20pt;
+  height: 50px;
+}
+div.Content[package='Wedding.modules'] div.widget:after {
+  content: " ";
+  display: block;
+  clear: both;
 }
 div.Content[package='Wedding.modules'] div.sections {
   max-width: 90%;
@@ -112,41 +179,6 @@ div.Content[package='Wedding.modules'] div.sections iframe {
 div[package='Wedding.modules'].EventInformation .information {
   color: #614051;
 }
-div[package='Wedding.modules'].EventInformation .information div.widget {
-  margin-bottom: 35px;
-}
-div[package='Wedding.modules'].EventInformation .information div.widget div[package='Wedding.widgets'].Countdown {
-  font-family: "Just Me Again Down Here", Verdana, Geneva, sans-serif;
-  font-size: 30px;
-  height: 40px;
-  padding: 0;
-}
-div[package='Wedding.modules'].EventInformation .information div.widget div[package='Wedding.widgets'].Countdown div {
-  float: left;
-  color: white;
-}
-div[package='Wedding.modules'].EventInformation .information div.widget div[package='Wedding.widgets'].Countdown div.unit {
-  background-color: #614051;
-  width: 45px;
-  height: 100%;
-  margin: 0 10px 0 0px;
-  padding: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}
-div[package='Wedding.modules'].EventInformation .information div.widget div[package='Wedding.widgets'].Countdown div.unit div {
-  text-align: center;
-  font-family: Arial;
-  width: 100%;
-  color: white;
-}
-div[package='Wedding.modules'].EventInformation .information div.widget div[package='Wedding.widgets'].Countdown div.unit div:nth-child(1) {
-  font-size: 24px;
-}
-div[package='Wedding.modules'].EventInformation .information div.widget div[package='Wedding.widgets'].Countdown div.unit div:nth-child(2) {
-  font-size: 10px;
-}
 div[package='Wedding.modules'].EventInformation .information div.location h4 {
   margin-bottom: 5px;
 }
@@ -164,12 +196,23 @@ div.Footer[package='Wedding.modules'] div.copyright {
 div.Header[package='Wedding.modules'] {
   background-color: #614051;
   width: 100%;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
-div.Header[package='Wedding.modules'] ul.sections li {
+div.Header[package='Wedding.modules'] div.sections {
+  margin: 0 auto;
+  width: 900px;
+}
+div.Header[package='Wedding.modules'] div.sections ul {
+  margin: 0;
+}
+div.Header[package='Wedding.modules'] div.sections ul li {
   font-size: 18px;
   list-style: none;
   float: left;
-  margin: 0px 10px 0 25px;
+  margin: 0 30px 0 0;
   padding: 12pt;
   cursor: pointer;
   color: white;
@@ -177,8 +220,8 @@ div.Header[package='Wedding.modules'] ul.sections li {
 }
 div.Header:after {
   content: " ";
-  clear: both;
   display: block;
+  clear: both;
 }
 div.OurStory[package='Wedding.modules'] {
   width: 100%;
@@ -186,7 +229,20 @@ div.OurStory[package='Wedding.modules'] {
 div.OurStory[package='Wedding.modules'] .story {
   color: #614051;
 }
-div[package='Wedding.modules'].TheWeddingParty .gallery .person {
+div[package='Wedding.modules'].TheWeddingParty .bridesmaids .group,
+div[package='Wedding.modules'].TheWeddingParty .groomsmen .group {
+  font-family: 'Texgyrechorus', helvetica, arial, sans-serif;
+  font-size: 20pt;
+  color: #614051;
+  float: left;
+  width: 200px;
+}
+div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery,
+div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery {
+  float: left;
+}
+div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person,
+div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person {
   cursor: pointer;
   float: left;
   margin: 5px;
@@ -197,15 +253,34 @@ div[package='Wedding.modules'].TheWeddingParty .gallery .person {
   padding: 3px;
   color: white;
 }
-div[package='Wedding.modules'].TheWeddingParty .gallery .person .photo {
+div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person .photo,
+div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person .photo {
   width: 200px;
   height: 200px;
 }
-div[package='Wedding.modules'].TheWeddingParty .gallery .person .photo img {
+div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person .photo img,
+div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person .photo img {
   display: none;
 }
-div[package='Wedding.modules'].TheWeddingParty .gallery .person .about {
+div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person .role,
+div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person .role {
   display: none;
+}
+div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person .about,
+div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person .about {
+  display: none;
+}
+div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery:after,
+div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+div[package='Wedding.modules'].TheWeddingParty .bridesmaids:after,
+div[package='Wedding.modules'].TheWeddingParty .groomsmen:after {
+  content: " ";
+  display: block;
+  clear: both;
 }
 div[package='Wedding.modules'].TheWeddingParty .cannotSeeThis {
   display: none;

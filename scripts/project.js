@@ -44,8 +44,11 @@ pageModal.init();
 
 
 var data = {
-	people: []
-};data.people.push({
+	people: {
+		bridesmaids: [],
+		groomsmen: []
+	}
+};data.people.bridesmaids.push({
 	"name": "Christy Ng",
 	"type":"Maid of Honor",
 	"imgs":[
@@ -59,7 +62,7 @@ var data = {
 		"My little sister Christy is a big ball of energy, very friendly, and always willing to help a friend or family. This is probably why she works at Sales Coordinator at Silver Cloud. I love her even though we don't always share the same interest but it helps she eats the chicken feet while I help eat the leg and thigh. =) She is my friend, who I can call to complain or celebrate about anything and count on her support, strength and laughter. "
 	]
 });
-data.people.push({
+data.people.groomsmen.push({
 	"name": "Chung Yeoh",
 	"type":"Groomsman",
 	"thumbnails":[
@@ -72,7 +75,7 @@ data.people.push({
 	"about":[
 	]
 });
-data.people.push({
+data.people.groomsmen.push({
 	"name": "Elbert Chan",
 	"type":"Groomsman",
 	"thumbnails":[
@@ -87,7 +90,7 @@ data.people.push({
 		"Raymond's older brother, Elbert, is a master of dance. So ladies, if you're looking for a man with moves, look no further.  Elbert is also an expert in dealing with computers; which (indirectly) influenced the direction that Raymond took in his education and career to become who he is today. Other things that Elbert is credited  with: <ul><li>Anything Raymond knows about Star Trek</li><li>appearing in the mirror when Raymond looks into it</li></ul>"
 	]
 });
-data.people.push({
+data.people.groomsmen.push({
 	"name": "Eli Martin Lara",
 	"type":"Best Man",
 	"thumbnails":[
@@ -103,7 +106,7 @@ data.people.push({
 		"Martin and Raymond were roommates while attending UC Davis. They go as far back as to when dial-up modems were common and DSL was so new and awesome. In the townhouse that they shared, Martin was the roommate that occupied the haunted bedroom. If you've never heard the story, please ask."
 	]
 });
-data.people.push({
+data.people.bridesmaids.push({
 	"name": "Eva Lee",
 	"type":"Bridesmaid",
 	"imgs":[
@@ -116,7 +119,7 @@ data.people.push({
 		"Eva and I met at a friend's home as we tried to make egg tarts (dan tat). This was the first indication that Eva was a true foodie - searching for the best places to eat and try making the food as well. Eva worked at the same company as me so she understood my up and down work experiences. We've travelled to many places - Oregon lakes, Santa Barbara beaches, rocking climbing up, shopping & eating in NYC. Eva is a great friend, listener, seeker of yummy food, travel buddy and planner of many road trips and gatherings. " 
 	]
 });
-data.people.push({
+data.people.bridesmaids.push({
 	"name": "Rebecca Reh",
 	"type":"Bridesmaid",
 	"thumbnails":[
@@ -283,7 +286,7 @@ Wedding.modules.Header = function() {
 	};
 
 	this.addSections = function(container) {
-		var list = $(that.wrapper).find('ul.sections');
+		var list = $(that.wrapper).find('ul.dynamic');
 		var title = $(container).find('h2');
 		var anchor = 'anchor-' + Math.random();
 		$(container).attr('anchor', anchor);
@@ -300,19 +303,27 @@ Wedding.modules.Header = function() {
 			}
 		}
 
-		$(that.wrapper).find('ul.sections').click(clickSections);
+		$(that.wrapper).find('div.sections ul').click(clickSections);
 	}
 
 	var clickSections = function(event) {
-		var reference = $(event.target).attr('ref');
+		var scrollTo = function(target) {
+			$('html,body').animate({
+				 scrollTop: $(target).offset().top - $('.Header').height()
+			});
+		};
 
-		if(reference != null) {
-			var target = $('div[package="Wedding.modules"].Content').find('div[anchor="' + reference + '"]');
+		if($(event.target).html() == "Home") {
+			scrollTo($('.website'));
+		} else {
+			var reference = $(event.target).attr('ref');
 	
-			if(target != null) {
-				$('html,body').animate({
-					 scrollTop: $(target).offset().top
-				});
+			if(reference != null) {
+				var target = $('div[package="Wedding.modules"].Content').find('div[anchor="' + reference + '"]');
+		
+				if(target != null) {
+					scrollTo(target);
+				}
 			}
 		}
 	};
@@ -336,29 +347,32 @@ Wedding.modules.TheWeddingParty = function() {
 	var that = this;
 
 	var people = data.people;
+	var parentElement;
 
 	var findPersonByName = function(name) {
-		for(var i = 0, len = people.length; i < len; i++) {
-			if(people[i].name == name) {
-				return people[i];
+		var i, len;
+		for(i = 0, len = people.bridesmaids.length; i < len; i++) {
+			if(people.bridesmaids[i].name == name) {
+				return people.bridesmaids[i];
+			}
+		}
+		for(i = 0, len = people.groomsmen.length; i < len; i++) {
+			if(people.bridesmaids[i].name == name) {
+				return people.groomsmen[i];
 			}
 		}
 		return null;
 	};
 
-	this.init = function(parentElement) {
-		var gallery = $(parentElement).find('.gallery');
-		var template = $(parentElement).find('.cannotSeeThis .person[enlarged="false"]');
-		for(var i = 0, len = people.length; i < len; i++) {
-			var personInst = addPersonToTemplate(people[i], template);
-			if(Math.floor(Math.random() * 2) == 0) {
-				$(personInst).appendTo(gallery);
-			} else {
-				$(personInst).prependTo(gallery);
-			}
-		}
+	this.init = function(parentWrapper) {
+		parentElement = parentWrapper;
+		var bridesmaidsGallery = $(parentElement).find('.bridesmaids .gallery');
+		var groomsmenGallery = $(parentElement).find('.groomsmen .gallery');
 
-		$(gallery).click(function(event) {
+		loadGroupToGallery(people.bridesmaids, bridesmaidsGallery);
+		loadGroupToGallery(people.groomsmen, groomsmenGallery);
+
+		$('.gallery').click(function(event) {
 			var focusedPerson = $(event.target).parents('div.person');
 			if(focusedPerson != null && focusedPerson.length > 0) {
 				var person = findPersonByName($(focusedPerson).find('.name').html());
@@ -402,6 +416,18 @@ Wedding.modules.TheWeddingParty = function() {
 				pageModal.showModal();
 			}
 		});
+	};
+
+	var loadGroupToGallery = function(group, galleryElement) {
+		var template = $(parentElement).find('.cannotSeeThis .person[enlarged="false"]');
+		for(var i = 0, len = group.length; i < len; i++) {
+			var personInst = addPersonToTemplate(group[i], template);
+			if(Math.floor(Math.random() * 2) == 0) {
+				$(personInst).appendTo(galleryElement);
+			} else {
+				$(personInst).prependTo(galleryElement);
+			}
+		}
 	};
 
 	var addPersonToTemplate = function(person, template) {
