@@ -59,7 +59,12 @@ var data = {
 		"christyNg01_thumbnail.png"
 	],
 	"about":[
-		"My little sister Christy is a big ball of energy, very friendly, and always willing to help a friend or family. This is probably why she works at Sales Coordinator at Silver Cloud. I love her even though we don't always share the same interest but it helps she eats the chicken feet while I help eat the leg and thigh. =) She is my friend, who I can call to complain or celebrate about anything and count on her support, strength and laughter. "
+		"My little sister Christy is a big ball of energy, very friendly, " +
+		"and always willing to help a friend or family. " +
+		"I love her even though we don't always share the same interest. " +
+		"She eats the chicken feet and skin while I eat dark and white meat. =) " +
+		"She is my friend, who I can call to complain or celebrate about anything and count on her support, " +
+		"strength and laughter. "
 	]
 });
 data.people.groomsmen.push({
@@ -116,7 +121,12 @@ data.people.bridesmaids.push({
 		"eva_01_thumb.jpg"
 	],
 	"about":[
-		"Eva and I met at a friend's home as we tried to make egg tarts (dan tat). This was the first indication that Eva was a true foodie - searching for the best places to eat and try making the food as well. Eva worked at the same company as me so she understood my up and down work experiences. We've travelled to many places - Oregon lakes, Santa Barbara beaches, rocking climbing up, shopping & eating in NYC. Eva is a great friend, listener, seeker of yummy food, travel buddy and planner of many road trips and gatherings. " 
+		"Eva and I met at a friend's home as we tried to make egg tarts (dan tat). " +
+		"This was the first indication that Eva was a true foodie - " +
+		"searching for the best places to eat and making the food as well. " +
+		"We've travelled to many places - Oregon lakes, Santa Barbara beaches," +
+		"shopping & eating in NYC. Eva is a great friend, listener, seeker of yummy food, travel buddy " +
+		"and planner of many road trips and gatherings. " 
 	]
 });
 data.people.bridesmaids.push({
@@ -130,10 +140,9 @@ data.people.bridesmaids.push({
 	],
 	"about":[ 
 		"Rebecca and I have known each other since 6th grade, where we sat next to each other in class." +  
-		" We both liked reading and had similar quiet personalities." + 
+		" We both liked reading and had similar quiet and studious personalities." + 
 		" We survived crazy middle school history projects, weird Spanish teachers and living in college dorms." +  
-		" Over the years, we have grown out of our shell and ventured out of Seattle." + 
-		" She graduated from Harvard with her Ph.D in Neurobiology." + 
+		" Over the years, we still remain in contact although we are no longer living in Seattle." + 
 		" She has always been a great friend, study buddy in school, " +
 		"planner of Halloween parties, and swing dancer. "
 	]
@@ -369,8 +378,10 @@ Wedding.modules.TheWeddingParty = function() {
 		var bridesmaidsGallery = $(parentElement).find('.bridesmaids .gallery');
 		var groomsmenGallery = $(parentElement).find('.groomsmen .gallery');
 
-		loadGroupToGallery(people.bridesmaids, bridesmaidsGallery);
-		loadGroupToGallery(people.groomsmen, groomsmenGallery);
+		loadGroupToGallery(people.bridesmaids, bridesmaidsGallery,
+				$(parentElement).find('.cannotSeeThis .person[enlarged="false"].bridesmaids'));
+		loadGroupToGallery(people.groomsmen, groomsmenGallery,
+				$(parentElement).find('.cannotSeeThis .person[enlarged="false"].groomsmen'));
 
 		$('.gallery').click(function(event) {
 			var focusedPerson = $(event.target).parents('div.person');
@@ -418,8 +429,7 @@ Wedding.modules.TheWeddingParty = function() {
 		});
 	};
 
-	var loadGroupToGallery = function(group, galleryElement) {
-		var template = $(parentElement).find('.cannotSeeThis .person[enlarged="false"]');
+	var loadGroupToGallery = function(group, galleryElement, template) {
 		for(var i = 0, len = group.length; i < len; i++) {
 			var personInst = addPersonToTemplate(group[i], template);
 			if(Math.floor(Math.random() * 2) == 0) {
@@ -450,6 +460,17 @@ Wedding.modules.TheWeddingParty = function() {
 
 		return personInst;
 	}
+};
+
+var Wedding = Wedding || {};
+Wedding.modules = Wedding.modules || {};
+
+Wedding.modules.TravelInfo = function() {
+	var that = this;
+
+	this.init = function(parentElement) {
+	
+	};
 };
 
 var initializedObjects = {};

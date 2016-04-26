@@ -61,20 +61,42 @@
 }
 .default-body-font {
   font-family: 'PT Sans', helvetica, arial, sans-serif;
-  font-size: 13pt;
+  font-size: 12pt;
 }
 .default-section-titles {
   font-family: 'Great Vibes', cursive;
   font-size: 24pt;
   color: #614051;
+  text-align: center;
+}
+body {
+  margin: 0;
+  background-color: white;
+  font-family: 'PT Sans', helvetica, arial, sans-serif;
+  font-size: 12pt;
 }
 body div.website {
-  margin: 65px auto;
-  width: 900px;
-  font-family: 'PT Sans', helvetica, arial, sans-serif;
-  font-size: 13pt;
+  width: 1050px;
+  position: relative;
+  margin-top: 60px;
+  z-index: 1;
 }
-body div.website .portrait {
+body div.website div[package='Wedding.modules'] h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 24pt;
+  color: #614051;
+  text-align: center;
+}
+body div.website div.Content[package='Wedding.modules'] {
+  width: 900px;
+  margin: 0 auto;
+}
+.clearFloat {
+  content: " ";
+  display: block;
+  clear: both;
+}
+div.Content[package='Wedding.modules'] .portrait {
   width: 100%;
   height: 275px;
   background-position: 0 50%;
@@ -83,36 +105,22 @@ body div.website .portrait {
   background-repeat: no-repeat;
   color: white;
 }
-body div.website .portrait div:nth-child(1) {
+div.Content[package='Wedding.modules'] .portrait div:nth-child(1) {
   font-family: 'Great Vibes', cursive;
   font-weight: 700;
   font-size: 36px;
   text-align: center;
   padding-top: 100px;
 }
-body div.website .portrait div:nth-child(2) {
+div.Content[package='Wedding.modules'] .portrait div:nth-child(2) {
   font-family: 'Texgyrechorus', helvetica, arial, sans-serif;
-  font-size: 20px;
+  font-size: 20pt;
   text-align: center;
   padding: 0 20px;
 }
-div[package='Wedding.modules'] h2 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 24pt;
-  color: #614051;
-}
-.clearFloat {
-  content: " ";
-  display: block;
-  clear: both;
-}
-div.Content[package='Wedding.modules'] {
-  width: 100%;
-}
 div.Content[package='Wedding.modules'] div.widget {
   width: 100%;
-  margin: 10px;
-  margin-bottom: 35px;
+  margin: 40px 0;
 }
 div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets'].Countdown {
   font-size: 30px;
@@ -141,17 +149,18 @@ div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets']
   color: white;
 }
 div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets'].Countdown div.unit div:nth-child(1) {
-  font-family: 'Texgyrechorus', helvetica, arial, sans-serif;
   font-size: 24px;
 }
 div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets'].Countdown div.unit div:nth-child(2) {
-  font-family: 'PT Sans', helvetica, arial, sans-serif;
-  font-size: 13pt;
   font-size: 8pt;
 }
 div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets'].Countdown > div:last-child {
   font-size: 20pt;
   height: 50px;
+}
+div.Content[package='Wedding.modules'] div[package='Wedding.modules'] {
+  margin: 0 0 40px 0;
+  background-color: white;
 }
 div.Content[package='Wedding.modules'] div.widget:after {
   content: " ";
@@ -166,9 +175,6 @@ div.Content[package='Wedding.modules'] div.sections {
   display: none;
   background-color: white;
   padding: 10px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
 }
 div.Content[package='Wedding.modules'] div.sections > div {
   display: none;
@@ -179,8 +185,10 @@ div.Content[package='Wedding.modules'] div.sections iframe {
 div[package='Wedding.modules'].EventInformation .information {
   color: #614051;
 }
-div[package='Wedding.modules'].EventInformation .information div.location h4 {
+div[package='Wedding.modules'].EventInformation .information div.specifics h3,
+div[package='Wedding.modules'].EventInformation .information div.specifics h4 {
   margin-bottom: 5px;
+  font-family: 'Texgyrechorus', helvetica, arial, sans-serif;
 }
 div.Footer[package='Wedding.modules'] {
   width: 100%;
@@ -194,31 +202,41 @@ div.Footer[package='Wedding.modules'] div.copyright {
   line-height: 3.5em;
 }
 div.Header[package='Wedding.modules'] {
-  background-color: #614051;
   width: 100%;
-  height: 60px;
+  background-color: #614051;
+  color: white;
   position: fixed;
+  z-index: 200;
+  height: 60px;
   top: 0;
   left: 0;
 }
-div.Header[package='Wedding.modules'] div.sections {
-  margin: 0 auto;
-  width: 900px;
+div.Header[package='Wedding.modules'] div.container {
+  width: 1050px;
+  float: left;
 }
-div.Header[package='Wedding.modules'] div.sections ul {
+div.Header[package='Wedding.modules'] div.container div.sections {
+  width: 900px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+div.Header[package='Wedding.modules'] div.container div.sections ul {
+  text-align: right;
   margin: 0;
 }
-div.Header[package='Wedding.modules'] div.sections ul li {
-  font-size: 18px;
+div.Header[package='Wedding.modules'] div.container div.sections ul li {
+  font-size: 12pt;
   list-style: none;
   float: left;
-  margin: 0 30px 0 0;
-  padding: 12pt;
+  margin: 0 0 0 30px;
   cursor: pointer;
-  color: white;
-  font-family: 'Texgyrechorus', helvetica, arial, sans-serif;
 }
-div.Header:after {
+div.Header[package='Wedding.modules'] div.container div.sections:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+div.Header[package='Wedding.modules'] div.container:after {
   content: " ";
   display: block;
   clear: both;
@@ -229,32 +247,36 @@ div.OurStory[package='Wedding.modules'] {
 div.OurStory[package='Wedding.modules'] .story {
   color: #614051;
 }
+div[package='Wedding.modules'].TheWeddingParty .bridesmaids,
+div[package='Wedding.modules'].TheWeddingParty .groomsmen {
+  width: 445.5px;
+  float: left;
+}
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids .group,
 div[package='Wedding.modules'].TheWeddingParty .groomsmen .group {
   font-family: 'Texgyrechorus', helvetica, arial, sans-serif;
   font-size: 20pt;
   color: #614051;
-  float: left;
-  width: 200px;
-}
-div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery,
-div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery {
-  float: left;
+  text-align: center;
 }
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person,
 div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person {
   cursor: pointer;
-  float: left;
+  width: 355px;
+  margin: 15px auto;
   margin: 5px;
-  background-color: #614051;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
   padding: 3px;
-  color: white;
+  color: #614051;
+}
+div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person .name,
+div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person .name {
+  width: 150px;
+  float: left;
+  text-align: center;
 }
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person .photo,
 div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person .photo {
+  float: left;
   width: 200px;
   height: 200px;
 }
@@ -270,20 +292,20 @@ div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person .ab
 div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person .about {
   display: none;
 }
-div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery:after,
-div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-div[package='Wedding.modules'].TheWeddingParty .bridesmaids:after,
-div[package='Wedding.modules'].TheWeddingParty .groomsmen:after {
+div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person:after,
+div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person:after {
   content: " ";
   display: block;
   clear: both;
 }
 div[package='Wedding.modules'].TheWeddingParty .cannotSeeThis {
   display: none;
+}
+div[package='Wedding.modules'].TheWeddingParty .bridesmaids:after,
+div[package='Wedding.modules'].TheWeddingParty .groomsmen:after {
+  content: " ";
+  display: block;
+  clear: both;
 }
 .person .photo {
   background-image: url('http://www.solarworlds.co.uk/photo/photos/20080222_PurpleOrchids_700x700med.jpg');
@@ -295,9 +317,9 @@ div[package='Wedding.modules'].TheWeddingParty .cannotSeeThis {
 }
 .pageModal.containing-box {
   background-color: white;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
+}
+.pageModal.containing-box .container {
+  padding: 5px;
 }
 .pageModal.containing-box .container .person .photo {
   float: left;
@@ -329,18 +351,89 @@ div[package='Wedding.modules'].TheWeddingParty .cannotSeeThis {
 }
 .pageModal.containing-box .container .person .info .about {
   width: 100%;
-  max-width: 480px;
 }
 .pageModal.containing-box .container .person:after {
   content: " ";
   display: block;
   clear: both;
 }
+div[package='Wedding.modules'].TravelInfo .first-three-width {
+  width: 279px;
+}
+div[package='Wedding.modules'].TravelInfo div.air-travel,
+div[package='Wedding.modules'].TravelInfo div.accommodations,
+div[package='Wedding.modules'].TravelInfo div.ground-transport {
+  float: left;
+  width: 279px;
+}
+div[package='Wedding.modules'].TravelInfo div.air-travel .prev,
+div[package='Wedding.modules'].TravelInfo div.accommodations .prev,
+div[package='Wedding.modules'].TravelInfo div.ground-transport .prev {
+  width: 279px;
+  height: 160px;
+}
+div[package='Wedding.modules'].TravelInfo div.air-travel div.prev,
+div[package='Wedding.modules'].TravelInfo div.accommodations div.prev,
+div[package='Wedding.modules'].TravelInfo div.ground-transport div.prev {
+  background-position: 0 50%;
+  background-size: cover;
+}
+div[package='Wedding.modules'].TravelInfo div.air-travel div.info,
+div[package='Wedding.modules'].TravelInfo div.accommodations div.info,
+div[package='Wedding.modules'].TravelInfo div.ground-transport div.info,
+div[package='Wedding.modules'].TravelInfo div.air-travel div.info table tr td,
+div[package='Wedding.modules'].TravelInfo div.accommodations div.info table tr td,
+div[package='Wedding.modules'].TravelInfo div.ground-transport div.info table tr td {
+  font-size: 10pt;
+}
+div[package='Wedding.modules'].TravelInfo div.air-travel h3,
+div[package='Wedding.modules'].TravelInfo div.accommodations h3,
+div[package='Wedding.modules'].TravelInfo div.ground-transport h3 {
+  font-family: 'Texgyrechorus', helvetica, arial, sans-serif;
+}
+div[package='Wedding.modules'].TravelInfo div.air-travel h4,
+div[package='Wedding.modules'].TravelInfo div.accommodations h4,
+div[package='Wedding.modules'].TravelInfo div.ground-transport h4 {
+  font-family: 10pt;
+}
+div[package='Wedding.modules'].TravelInfo div.air-travel div.prev {
+  background-image: url('/img/paper-airplane.png');
+}
+div[package='Wedding.modules'].TravelInfo div.accommodations div.prev {
+  background-image: url('/img/maple-tree-inn.jpg');
+}
+div[package='Wedding.modules'].TravelInfo div.ground-transport div.prev {
+  background-image: url('/img/family-motorcycle.png');
+}
+div[package='Wedding.modules'].TravelInfo div.accommodations {
+  margin: 0 27px;
+}
+div[package='Wedding.modules'].TravelInfo div.accommodations table {
+  border: 1px solid #614051;
+  border-width: 1px 0 0 1px;
+}
+div[package='Wedding.modules'].TravelInfo div.accommodations table tr td {
+  border: 1px solid #614051;
+  border-width: 0 1px 1px 0;
+  padding: 2px;
+}
+div[package='Wedding.modules'].TravelInfo div.accommodations table tr td:nth-child(2) {
+  text-align: right;
+}
+div[package='Wedding.modules'].TravelInfo div.things-to-do {
+  width: 100%;
+}
+div[package='Wedding.modules'].TravelInfo div.clear {
+  content: " ";
+  display: block;
+  clear: both;
+  height: 1px;
+}
 .pageModal.overlay {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 301;
   width: 100%;
   height: 100%;
   background-color: #614051;
@@ -351,7 +444,7 @@ div[package='Wedding.modules'].TheWeddingParty .cannotSeeThis {
   position: fixed;
   left: 50%;
   margin-left: -37.5%;
-  z-index: 2;
+  z-index: 401;
 }
 .pageModal.containing-box .container {
   float: left;
@@ -363,6 +456,10 @@ div[package='Wedding.modules'].TheWeddingParty .cannotSeeThis {
   width: 50px;
   height: 50px;
   cursor: pointer;
+  position: absolute;
+  top: -25px;
+  right: -25px;
+  z-index: 402;
 }
 .pageModal.containing-box:after {
   content: " ";
