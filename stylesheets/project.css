@@ -91,6 +91,24 @@ body div.website div.Content[package='Wedding.modules'] {
   width: 900px;
   margin: 0 auto;
 }
+body .table {
+  border: 1px solid black;
+  border-width: 1px 0 0 1px;
+}
+body .table .row {
+  display: block;
+}
+body .table .row .cell {
+  width: 150px;
+  float: left;
+  border: 1px solid black;
+  border-width: 0 1px 1px 0;
+}
+body .table:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
 .clearFloat {
   content: " ";
   display: block;
@@ -360,6 +378,9 @@ div[package='Wedding.modules'].TheWeddingParty .groomsmen:after {
 div[package='Wedding.modules'].TravelInfo .first-three-width {
   width: 279px;
 }
+div[package='Wedding.modules'].TravelInfo div div.seeMore {
+  display: hidden;
+}
 div[package='Wedding.modules'].TravelInfo div.air-travel,
 div[package='Wedding.modules'].TravelInfo div.accommodations,
 div[package='Wedding.modules'].TravelInfo div.ground-transport {
@@ -377,14 +398,6 @@ div[package='Wedding.modules'].TravelInfo div.accommodations div.prev,
 div[package='Wedding.modules'].TravelInfo div.ground-transport div.prev {
   background-position: 0 50%;
   background-size: cover;
-}
-div[package='Wedding.modules'].TravelInfo div.air-travel div.info,
-div[package='Wedding.modules'].TravelInfo div.accommodations div.info,
-div[package='Wedding.modules'].TravelInfo div.ground-transport div.info,
-div[package='Wedding.modules'].TravelInfo div.air-travel div.info table tr td,
-div[package='Wedding.modules'].TravelInfo div.accommodations div.info table tr td,
-div[package='Wedding.modules'].TravelInfo div.ground-transport div.info table tr td {
-  font-size: 10pt;
 }
 div[package='Wedding.modules'].TravelInfo div.air-travel h3,
 div[package='Wedding.modules'].TravelInfo div.accommodations h3,
@@ -408,20 +421,55 @@ div[package='Wedding.modules'].TravelInfo div.ground-transport div.prev {
 div[package='Wedding.modules'].TravelInfo div.accommodations {
   margin: 0 27px;
 }
-div[package='Wedding.modules'].TravelInfo div.accommodations table {
-  border: 1px solid #614051;
-  border-width: 1px 0 0 1px;
+div[package='Wedding.modules'].TravelInfo div.accommodations .table {
+  width: 274px;
+  border-color: #614051;
 }
-div[package='Wedding.modules'].TravelInfo div.accommodations table tr td {
-  border: 1px solid #614051;
-  border-width: 0 1px 1px 0;
-  padding: 2px;
+div[package='Wedding.modules'].TravelInfo div.accommodations .table .row .cell {
+  border-color: #614051;
+  padding: 3px;
 }
-div[package='Wedding.modules'].TravelInfo div.accommodations table tr td:nth-child(2) {
+div[package='Wedding.modules'].TravelInfo div.accommodations .table .row .cell:nth-child(1) {
+  width: 180px;
+}
+div[package='Wedding.modules'].TravelInfo div.accommodations .table .row .cell:nth-child(2) {
+  width: 80px;
   text-align: right;
 }
 div[package='Wedding.modules'].TravelInfo div.things-to-do {
   width: 100%;
+}
+div[package='Wedding.modules'].TravelInfo div.things-to-do h3 {
+  font-family: 'Texgyrechorus', helvetica, arial, sans-serif;
+}
+div[package='Wedding.modules'].TravelInfo div.topic .info {
+  max-height: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+div[package='Wedding.modules'].TravelInfo div.topic .info .inner {
+  font-size: 10pt;
+}
+div[package='Wedding.modules'].TravelInfo div.topic a.seeMore,
+div[package='Wedding.modules'].TravelInfo div.topic a.hideOverflow {
+  display: none;
+  font-size: 10pt;
+  text-decoration: none;
+}
+div[package='Wedding.modules'].TravelInfo div.topic.exempted .info {
+  max-height: none;
+}
+div[package='Wedding.modules'].TravelInfo div.topic.exempted a.seeMore {
+  display: none;
+}
+div[package='Wedding.modules'].TravelInfo div.topic.exempted a.hideOverflow {
+  display: block;
+}
+div[package='Wedding.modules'].TravelInfo div.topic.overflown a.seeMore {
+  display: block;
+}
+div[package='Wedding.modules'].TravelInfo div.topic.overflown a.hideOverflow {
+  display: none;
 }
 div[package='Wedding.modules'].TravelInfo div.clear {
   content: " ";
