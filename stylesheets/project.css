@@ -56,6 +56,11 @@
   src: local('Handlee Regular'), local('Handlee-Regular'), url(https://fonts.gstatic.com/s/handlee/v5/juOaTHBX9N7mCQYS68pw6QLUuEpTyoUstqEm5AMlJo4.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
+/* @theme-color: rgb(97,64,81); */
+.eclipse-gradient {
+  background-image: url('/img/assets/eclipse_gradient.png');
+  background-repeat: repeat-x;
+}
 @handlee-family {
   font-family: 'Handlee', helvetica, arial, sans-serif;
 }
@@ -66,7 +71,7 @@
 .default-section-titles {
   font-family: 'Great Vibes', cursive;
   font-size: 24pt;
-  color: #614051;
+  color: #601a78;
   text-align: center;
 }
 body {
@@ -84,7 +89,7 @@ body div.website {
 body div.website div[package='Wedding.modules'] h2 {
   font-family: 'Great Vibes', cursive;
   font-size: 24pt;
-  color: #614051;
+  color: #601a78;
   text-align: center;
   margin: 0;
 }
@@ -150,10 +155,12 @@ div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets']
 }
 div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets'].Countdown div {
   float: left;
-  color: #614051;
+  color: #601a78;
 }
 div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets'].Countdown div.unit {
-  background-color: #614051;
+  background-image: url('/img/assets/eclipse_gradient.png');
+  background-repeat: repeat-x;
+  background-position: 0 -15px;
   width: 45px;
   height: 100%;
   margin: 0 10px 0 0px;
@@ -182,7 +189,7 @@ div.Content[package='Wedding.modules'] div[package='Wedding.modules'] {
   background-color: white;
   width: 878px;
   padding: 11px;
-  border: 1px solid #614051;
+  border: 1px solid #601a78;
 }
 div.Content[package='Wedding.modules'] div.widget:after {
   content: " ";
@@ -205,7 +212,7 @@ div.Content[package='Wedding.modules'] div.sections iframe {
   opacity: 1;
 }
 div[package='Wedding.modules'].EventInformation .information {
-  color: #614051;
+  color: #601a78;
 }
 div[package='Wedding.modules'].EventInformation .information div.specifics h3,
 div[package='Wedding.modules'].EventInformation .information div.specifics h4 {
@@ -227,6 +234,7 @@ div.Footer[package='Wedding.modules'] div.copyright {
 div.Header[package='Wedding.modules'] {
   width: 100%;
   background-image: url('/img/assets/eclipse_gradient.png');
+  background-repeat: repeat-x;
   background-position: 0 -44px;
   color: white;
   position: fixed;
@@ -269,7 +277,20 @@ div.OurStory[package='Wedding.modules'] {
   width: 100%;
 }
 div.OurStory[package='Wedding.modules'] .story {
-  color: #614051;
+  color: #601a78;
+}
+div.OurStory[package='Wedding.modules'] .story .story-version {
+  float: left;
+  width: 433px;
+}
+div.OurStory[package='Wedding.modules'] .story .story-version p {
+  font-size: 12px;
+}
+div.OurStory[package='Wedding.modules'] .story .story-version:nth-child(1) {
+  margin-right: 6px;
+}
+div.OurStory[package='Wedding.modules'] .story .story-version:nth-child(2) {
+  margin-left: 6px;
 }
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids,
 div[package='Wedding.modules'].TheWeddingParty .groomsmen {
@@ -280,7 +301,7 @@ div[package='Wedding.modules'].TheWeddingParty .bridesmaids .group,
 div[package='Wedding.modules'].TheWeddingParty .groomsmen .group {
   font-family: 'Texgyrechorus', helvetica, arial, sans-serif;
   font-size: 20pt;
-  color: #614051;
+  color: #601a78;
   text-align: center;
 }
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person,
@@ -290,7 +311,7 @@ div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person {
   margin: 15px auto;
   margin: 5px;
   padding: 3px;
-  color: #614051;
+  color: #601a78;
 }
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person .name,
 div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person .name {
@@ -367,11 +388,11 @@ div[package='Wedding.modules'].TheWeddingParty .groomsmen:after {
 .pageModal.containing-box .container .person .info .name {
   width: 100%;
   font-family: 'Texgyrechorus', helvetica, arial, sans-serif;
-  color: #614051;
+  color: #601a78;
   font-size: 18pt;
 }
 .pageModal.containing-box .container .person .info .role {
-  color: #614051;
+  color: #601a78;
 }
 .pageModal.containing-box .container .person .info .about {
   width: 100%;
@@ -429,10 +450,10 @@ div[package='Wedding.modules'].TravelInfo div.accommodations {
 }
 div[package='Wedding.modules'].TravelInfo div.accommodations .table {
   width: 270px;
-  border-color: #614051;
+  border-color: #601a78;
 }
 div[package='Wedding.modules'].TravelInfo div.accommodations .table .row .cell {
-  border-color: #614051;
+  border-color: #601a78;
   padding: 3px;
 }
 div[package='Wedding.modules'].TravelInfo div.accommodations .table .row .cell:nth-child(1) {
@@ -490,7 +511,7 @@ div[package='Wedding.modules'].TravelInfo div.clear {
   z-index: 301;
   width: 100%;
   height: 100%;
-  background-color: #614051;
+  background-color: #601a78;
   opacity: 0.8;
   display: none;
 }
