@@ -4,30 +4,6 @@
     A set of useful LESS mixins
     More info at: http://lesselements.com
   ---------------------------------------------------*/
-/* latin */
-@font-face {
-  font-family: 'Cedarville Cursive';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Cedarville Cursive'), local('Cedarville-Cursive'), url(https://fonts.gstatic.com/s/cedarvillecursive/v7/cuCe6HrkcqrWTWTUE7dw-4iNpYP4ormdS933dwqOPYU.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-}
-/* latin-ext */
-@font-face {
-  font-family: 'Just Me Again Down Here';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Just Me Again Down Here'), local('JustMeAgainDownHere'), url(https://fonts.gstatic.com/s/justmeagaindownhere/v8/sN06iTc9ITubLTgXoG-kc9LxhifvsZyFlIktPLD8SVhSjxrNWc6TL5x1_u3zzrgH.woff2) format('woff2');
-  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
-@font-face {
-  font-family: 'Just Me Again Down Here';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Just Me Again Down Here'), local('JustMeAgainDownHere'), url(https://fonts.gstatic.com/s/justmeagaindownhere/v8/sN06iTc9ITubLTgXoG-kcxBxoRNZkC32eJ50uEAK8oQC1LhKU8qFLLahJuQDJSaO.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-}
 /* latin-ext */
 @font-face {
   font-family: 'Great Vibes';
@@ -49,39 +25,23 @@
   font-family: 'Texgyrechorus';
   src: url("/fonts/texgyrechorus-mediumitalic.otf") format("opentype");
 }
-@font-face {
-  font-family: 'Handlee';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Handlee Regular'), local('Handlee-Regular'), url(https://fonts.gstatic.com/s/handlee/v5/juOaTHBX9N7mCQYS68pw6QLUuEpTyoUstqEm5AMlJo4.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-}
 /* @theme-color: rgb(97,64,81); */
-.eclipse-gradient {
-  background-image: url('/img/assets/eclipse_gradient.png');
-  background-repeat: repeat-x;
-}
-@handlee-family {
-  font-family: 'Handlee', helvetica, arial, sans-serif;
+/*@body-color: rgb(221, 219, 227);*/
+.themed-background {
+  background-color: RebeccaPurple;
 }
 .default-body-font {
   font-family: 'PT Sans', helvetica, arial, sans-serif;
   font-size: 11pt;
 }
-.default-section-titles {
-  font-family: 'Great Vibes', cursive;
-  font-size: 24pt;
-  color: #601a78;
-  text-align: center;
-}
 body {
   margin: 0;
-  background-color: #dddbe3;
+  background-color: white;
   font-family: 'PT Sans', helvetica, arial, sans-serif;
   font-size: 11pt;
 }
 body div.website {
-  width: 1050px;
+  width: 100%;
   position: relative;
   margin-top: 60px;
   z-index: 1;
@@ -89,9 +49,15 @@ body div.website {
 body div.website div[package='Wedding.modules'] h2 {
   font-family: 'Great Vibes', cursive;
   font-size: 24pt;
-  color: #601a78;
   text-align: center;
   margin: 0;
+  line-height: 0.1em;
+  width: 100%;
+  border-top: 1px solid black;
+}
+body div.website div[package='Wedding.modules'] h2 span {
+  background-color: white;
+  padding: 0 10px;
 }
 body div.website div.Content[package='Wedding.modules'] {
   width: 900px;
@@ -137,7 +103,6 @@ div.Content[package='Wedding.modules'] .portrait div:nth-child(1) {
   padding-top: 100px;
 }
 div.Content[package='Wedding.modules'] .portrait div:nth-child(2) {
-  font-family: 'Texgyrechorus', helvetica, arial, sans-serif;
   font-size: 20pt;
   text-align: center;
   padding: 0 20px;
@@ -147,23 +112,20 @@ div.Content[package='Wedding.modules'] div.widget {
   margin: 40px 0;
 }
 div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets'].Countdown {
-  font-size: 30px;
   height: 40px;
   padding: 0;
   width: 550px;
   margin: 0 auto;
 }
-div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets'].Countdown div {
+div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets'].Countdown > div {
   float: left;
-  color: #601a78;
+  margin: 0 10px 0 0px;
 }
 div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets'].Countdown div.unit {
-  background-image: url('/img/assets/eclipse_gradient.png');
-  background-repeat: repeat-x;
+  background-color: RebeccaPurple;
   background-position: 0 -15px;
   width: 45px;
   height: 100%;
-  margin: 0 10px 0 0px;
   padding: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -180,16 +142,8 @@ div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets']
 div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets'].Countdown div.unit div:nth-child(2) {
   font-size: 8pt;
 }
-div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets'].Countdown > div:last-child {
-  font-size: 20pt;
-  height: 50px;
-}
 div.Content[package='Wedding.modules'] div[package='Wedding.modules'] {
-  margin: 0 0 20px 0;
-  background-color: white;
-  width: 878px;
-  padding: 11px;
-  border: 1px solid #601a78;
+  margin: 30px 0 0 0;
 }
 div.Content[package='Wedding.modules'] div.widget:after {
   content: " ";
@@ -211,13 +165,19 @@ div.Content[package='Wedding.modules'] div.sections > div {
 div.Content[package='Wedding.modules'] div.sections iframe {
   opacity: 1;
 }
-div[package='Wedding.modules'].EventInformation .information {
-  color: #601a78;
+div[package='Wedding.modules'].EventInformation .information .specifics {
+  margin-bottom: 10px;
 }
-div[package='Wedding.modules'].EventInformation .information div.specifics h3,
-div[package='Wedding.modules'].EventInformation .information div.specifics h4 {
-  margin-bottom: 5px;
-  font-family: 'Texgyrechorus', helvetica, arial, sans-serif;
+div[package='Wedding.modules'].EventInformation .information div.specifics .location {
+  float: left;
+}
+div[package='Wedding.modules'].EventInformation .information div.specifics .map {
+  float: right;
+}
+div[package='Wedding.modules'].EventInformation .information div.specifics div:nth-child(3) {
+  content: " ";
+  display: block;
+  clear: both;
 }
 div.Footer[package='Wedding.modules'] {
   width: 100%;
@@ -233,8 +193,7 @@ div.Footer[package='Wedding.modules'] div.copyright {
 }
 div.Header[package='Wedding.modules'] {
   width: 100%;
-  background-image: url('/img/assets/eclipse_gradient.png');
-  background-repeat: repeat-x;
+  background-color: RebeccaPurple;
   background-position: 0 -44px;
   color: white;
   position: fixed;
@@ -244,7 +203,7 @@ div.Header[package='Wedding.modules'] {
   left: 0;
 }
 div.Header[package='Wedding.modules'] div.container {
-  width: 1050px;
+  width: 100%;
   float: left;
 }
 div.Header[package='Wedding.modules'] div.container div.sections {
@@ -276,9 +235,6 @@ div.Header[package='Wedding.modules'] div.container:after {
 div.OurStory[package='Wedding.modules'] {
   width: 100%;
 }
-div.OurStory[package='Wedding.modules'] .story {
-  color: #601a78;
-}
 div.OurStory[package='Wedding.modules'] .story .story-version {
   float: left;
   width: 433px;
@@ -299,9 +255,7 @@ div[package='Wedding.modules'].TheWeddingParty .groomsmen {
 }
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids .group,
 div[package='Wedding.modules'].TheWeddingParty .groomsmen .group {
-  font-family: 'Texgyrechorus', helvetica, arial, sans-serif;
   font-size: 20pt;
-  color: #601a78;
   text-align: center;
 }
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person,
@@ -311,7 +265,6 @@ div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person {
   margin: 15px auto;
   margin: 5px;
   padding: 3px;
-  color: #601a78;
 }
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person .name,
 div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person .name {
@@ -337,11 +290,8 @@ div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person .ab
 div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person .about {
   display: none;
 }
-div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person:after,
-div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person:after {
-  content: " ";
-  display: block;
-  clear: both;
+div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery {
+  text-align: right;
 }
 div[package='Wedding.modules'].TheWeddingParty .cannotSeeThis {
   display: none;
@@ -387,12 +337,7 @@ div[package='Wedding.modules'].TheWeddingParty .groomsmen:after {
 }
 .pageModal.containing-box .container .person .info .name {
   width: 100%;
-  font-family: 'Texgyrechorus', helvetica, arial, sans-serif;
-  color: #601a78;
   font-size: 18pt;
-}
-.pageModal.containing-box .container .person .info .role {
-  color: #601a78;
 }
 .pageModal.containing-box .container .person .info .about {
   width: 100%;
@@ -426,24 +371,20 @@ div[package='Wedding.modules'].TravelInfo div.ground-transport div.prev {
   background-position: 0 50%;
   background-size: cover;
 }
-div[package='Wedding.modules'].TravelInfo div.air-travel h3,
-div[package='Wedding.modules'].TravelInfo div.accommodations h3,
-div[package='Wedding.modules'].TravelInfo div.ground-transport h3 {
-  font-family: 'Texgyrechorus', helvetica, arial, sans-serif;
-}
 div[package='Wedding.modules'].TravelInfo div.air-travel h4,
 div[package='Wedding.modules'].TravelInfo div.accommodations h4,
 div[package='Wedding.modules'].TravelInfo div.ground-transport h4 {
   font-family: 10pt;
 }
 div[package='Wedding.modules'].TravelInfo div.air-travel div.prev {
-  background-image: url('/img/paper-airplane.png');
+  background-image: url('/img/AirTravelPlane.jpg');
 }
 div[package='Wedding.modules'].TravelInfo div.accommodations div.prev {
   background-image: url('/img/maple-tree-inn.jpg');
+  background-position-y: -50px;
 }
 div[package='Wedding.modules'].TravelInfo div.ground-transport div.prev {
-  background-image: url('/img/family-motorcycle.png');
+  background-image: url('/img/Classic-cable-car.jpg');
 }
 div[package='Wedding.modules'].TravelInfo div.accommodations {
   margin: 0 27px;
@@ -466,11 +407,8 @@ div[package='Wedding.modules'].TravelInfo div.accommodations .table .row .cell:n
 div[package='Wedding.modules'].TravelInfo div.things-to-do {
   width: 100%;
 }
-div[package='Wedding.modules'].TravelInfo div.things-to-do h3 {
-  font-family: 'Texgyrechorus', helvetica, arial, sans-serif;
-}
 div[package='Wedding.modules'].TravelInfo div.topic .info {
-  max-height: 200px;
+  max-height: 190px;
   text-overflow: ellipsis;
   overflow: hidden;
 }
