@@ -78,6 +78,11 @@ data.people.groomsmen.push({
 		"chung_02.jpg"
 	],
 	"about":[
+		"Chung and Raymond met each other while both were employed by Accenture, and staffed at eBay. " +
+		"Their cubicles shared a corner so jokes and laughter were shared amongst each other even if each " +
+		"was not visible to the other behind the cube walls.",
+		"An odd fact about Raymond is that he passed age 21 without drinking. In fact, Chung was the positive " +
+		"influence that convinced Raymond to go to bars and get drinks regularly at the way too young age of 30."
 	]
 });
 data.people.groomsmen.push({
@@ -257,6 +262,28 @@ Wedding.modules.Content = function() {
 	var that = this;
 
 	this.init = function(parentElement) {
+		var portrait = $(parentElement).find('.portrait');
+		var portraitSliders = $(portrait).find('.slider .slide');
+
+		if(portraitSliders.length > 1) {
+			var width = $(portrait).width();
+			$(portrait).find('.slider').width(portraitSliders.length * width);
+
+			var slideAction = setInterval(function(e) {
+				$(portrait).find('.slider').animate({
+					marginLeft: (-1 * width) + 'px'
+				}, {
+					duration: 500,
+					complete: function() {
+						var first = $(portrait).find('.slider .slide')[0];
+						var copyOf = $(first).clone();
+						$(first).remove();
+						$(portrait).find('.slider').css('margin-left', 0);
+						$(copyOf).appendTo($(portrait).find('.slider'));
+					}
+				});
+			}, 8000);
+		}
 	};
 };
 
@@ -444,7 +471,12 @@ Wedding.modules.TheWeddingParty = function() {
 		var personInst = $(template).clone();
 		$(personInst).find('.name').html(person.name);
 		$(personInst).find('.role').html(person.type);
-		$(personInst).find('.about').html(person.about);
+		$(personInst).find('.about').empty();
+		for(var i = 0, len = person.about.length; i <len; i++) {
+			var p = $('<p/>');
+			$(p).html(person.about[i]).appendTo($(personInst).find('.about'));
+		}
+
 		var photoFrame = $(personInst).find('.photo');
 		if(person.hasOwnProperty('thumbnails') && person.thumbnails.length > 0) {
 			var thumbnail = 'img/people/thumbnails/' + person.thumbnails[person.thumbnails.length == 1 ?

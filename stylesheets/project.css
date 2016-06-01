@@ -86,23 +86,52 @@ body .table:after {
   display: block;
   clear: both;
 }
+/********************* Portrait backgrounds ******************************/
 div.Content[package='Wedding.modules'] .portrait {
-  width: 100%;
-  height: 275px;
-  background-position: 0 50%;
-  background-size: cover;
-  background-image: url("../img/his_hers_original_scale.jpg");
-  background-repeat: no-repeat;
+  width: 900px;
+  height: 325px;
   color: white;
+  position: relative;
+  overflow: hidden;
 }
-div.Content[package='Wedding.modules'] .portrait div:nth-child(1) {
+div.Content[package='Wedding.modules'] .portrait div.slider {
+  z-index: 0;
+  height: 325px;
+  margin-left: 0;
+}
+div.Content[package='Wedding.modules'] .portrait div.slider div.slide {
+  float: left;
+  width: 900px;
+  height: 325px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+div.Content[package='Wedding.modules'] .portrait div.slider .rocky_mountain_natl_park {
+  background-position: 0 84%;
+  background-image: url("../img/rocky_mountain_natl_park.jpg");
+}
+div.Content[package='Wedding.modules'] .portrait div.slider .his_and_hers {
+  background-position: 0 45%;
+  background-image: url("../img/his_hers_original_scale.jpg");
+}
+div.Content[package='Wedding.modules'] .portrait div.slider .big_sur {
+  background-position: 0 70%;
+  background-image: url("../img/kathryn_and_me_bigsur.jpg");
+}
+div.Content[package='Wedding.modules'] .portrait div.banner {
+  position: absolute;
+  top: 0;
+  left: 300px;
+  z-index: 1;
+}
+div.Content[package='Wedding.modules'] .portrait div.banner div:nth-child(1) {
   font-family: 'Great Vibes', cursive;
   font-weight: 700;
   font-size: 36px;
   text-align: center;
   padding-top: 100px;
 }
-div.Content[package='Wedding.modules'] .portrait div:nth-child(2) {
+div.Content[package='Wedding.modules'] .portrait div.banner div:nth-child(2) {
   font-size: 20pt;
   text-align: center;
   padding: 0 20px;
@@ -237,16 +266,16 @@ div.OurStory[package='Wedding.modules'] {
 }
 div.OurStory[package='Wedding.modules'] .story .story-version {
   float: left;
-  width: 433px;
+  width: 432px;
 }
 div.OurStory[package='Wedding.modules'] .story .story-version p {
   font-size: 12px;
 }
-div.OurStory[package='Wedding.modules'] .story .story-version:nth-child(1) {
-  margin-right: 6px;
+div.OurStory[package='Wedding.modules'] .story .story-version.kathryn {
+  margin-right: 18px;
 }
-div.OurStory[package='Wedding.modules'] .story .story-version:nth-child(2) {
-  margin-left: 6px;
+div.OurStory[package='Wedding.modules'] .story .story-version.raymond {
+  margin-left: 18px;
 }
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids,
 div[package='Wedding.modules'].TheWeddingParty .groomsmen {
@@ -261,16 +290,16 @@ div[package='Wedding.modules'].TheWeddingParty .groomsmen .group {
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person,
 div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person {
   cursor: pointer;
-  width: 355px;
   margin: 15px auto;
   margin: 5px;
   padding: 3px;
 }
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person .name,
 div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person .name {
-  width: 150px;
+  width: 232px;
   float: left;
   text-align: center;
+  line-height: 150px;
 }
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person .photo,
 div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person .photo {
@@ -290,8 +319,11 @@ div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person .ab
 div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person .about {
   display: none;
 }
-div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery {
-  text-align: right;
+div[package='Wedding.modules'].TheWeddingParty .bridesmaids {
+  margin-right: 18px;
+}
+div[package='Wedding.modules'].TheWeddingParty .groomsmen {
+  margin-left: 18px;
 }
 div[package='Wedding.modules'].TheWeddingParty .cannotSeeThis {
   display: none;
@@ -336,11 +368,7 @@ div[package='Wedding.modules'].TheWeddingParty .groomsmen:after {
   margin: 10px;
 }
 .pageModal.containing-box .container .person .info .name {
-  width: 100%;
   font-size: 18pt;
-}
-.pageModal.containing-box .container .person .info .about {
-  width: 100%;
 }
 .pageModal.containing-box .container .person:after {
   content: " ";
@@ -408,7 +436,7 @@ div[package='Wedding.modules'].TravelInfo div.things-to-do {
   width: 100%;
 }
 div[package='Wedding.modules'].TravelInfo div.topic .info {
-  max-height: 190px;
+  max-height: 500px;
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -462,17 +490,25 @@ div[package='Wedding.modules'].TravelInfo div.clear {
 .pageModal.containing-box .container {
   float: left;
 }
-.pageModal.containing-box .exit {
-  float: right;
-  background-image: url('/img/assets/close_button.png');
-  background-repeat: no-repeat;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
+.pageModal.containing-box button.exit {
+  background-color: RebeccaPurple;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  -webkit-box-shadow: 0 0 8px #000;
+  box-shadow: 0 0 8px #000;
+  color: #fff;
+  display: block;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  opacity: 1;
+  padding: 2px 6px;
   position: absolute;
-  top: -25px;
-  right: -25px;
+  text-decoration: none;
+  top: -15px;
+  right: -15px;
   z-index: 402;
+  cursor: pointer;
 }
 .pageModal.containing-box:after {
   content: " ";
