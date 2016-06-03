@@ -31,7 +31,7 @@ var PageModal = function() {
 	};
 
 	this.init = function() {
-		$('.pageModal.containing-box').find('.exit').click(function(event) {
+		$('.pageModal.containing-box .exit, .overlay').click(function(event) {
 			that.hideModal();
 			that.emptyModal();
 		});
