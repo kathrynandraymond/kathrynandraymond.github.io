@@ -90,7 +90,6 @@ body .table:after {
 div.Content[package='Wedding.modules'] .portrait {
   width: 900px;
   height: 325px;
-  color: white;
   position: relative;
   overflow: hidden;
 }
@@ -118,10 +117,45 @@ div.Content[package='Wedding.modules'] .portrait div.slider .big_sur {
   background-position: 0 70%;
   background-image: url("../img/kathryn_and_me_bigsur.jpg");
 }
+div.Content[package='Wedding.modules'] .portrait div.slider div.slide:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+div.Content[package='Wedding.modules'] .portrait div.slidernav {
+  position: absolute;
+  z-index: 1;
+  color: white;
+  font-size: 40px;
+  top: 126px;
+  cursor: pointer;
+  background-image: url('../img/assets/leftArrow.png');
+  width: 28px;
+  height: 45px;
+  background-position: -10px 50%;
+}
+div.Content[package='Wedding.modules'] .portrait div.slidernav.left {
+  left: 10px;
+}
+div.Content[package='Wedding.modules'] .portrait div.slidernav.right {
+  right: 10px;
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+div.Content[package='Wedding.modules'] .portrait div.slidernav:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
 div.Content[package='Wedding.modules'] .portrait div.banner {
   position: absolute;
   top: 0;
   left: 300px;
+  color: white;
   z-index: 1;
 }
 div.Content[package='Wedding.modules'] .portrait div.banner div:nth-child(1) {
