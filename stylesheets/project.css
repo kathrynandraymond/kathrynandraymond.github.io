@@ -135,7 +135,7 @@ div.Content[package='Wedding.modules'] .portrait div.slider .seattle_wheel {
 }
 div.Content[package='Wedding.modules'] .portrait div.slider .space_needle {
   background-position: 0 78%;
-  background-image: url("../img/SpaceNeedle.jpg");
+  background-image: url("../img/SpaceNeedle.JPG");
 }
 div.Content[package='Wedding.modules'] .portrait div.slider div.slide:after {
   content: " ";
