@@ -60,7 +60,7 @@ body div.website div[package='Wedding.modules'] h2 span {
   padding: 0 10px;
 }
 body div.website div.Content[package='Wedding.modules'] {
-  width: 900px;
+  width: 850px;
   margin: 0 auto;
 }
 body .table {
@@ -88,7 +88,7 @@ body .table:after {
 }
 /********************* Portrait backgrounds ******************************/
 div.Content[package='Wedding.modules'] .portrait {
-  width: 900px;
+  width: 850px;
   height: 325px;
   position: relative;
   overflow: hidden;
@@ -100,7 +100,7 @@ div.Content[package='Wedding.modules'] .portrait div.slider {
 }
 div.Content[package='Wedding.modules'] .portrait div.slider div.slide {
   float: left;
-  width: 900px;
+  width: 850px;
   height: 325px;
   background-repeat: no-repeat;
   background-size: cover;
@@ -110,12 +110,32 @@ div.Content[package='Wedding.modules'] .portrait div.slider .rocky_mountain_natl
   background-image: url("../img/rocky_mountain_natl_park.jpg");
 }
 div.Content[package='Wedding.modules'] .portrait div.slider .his_and_hers {
-  background-position: 0 45%;
+  background-position: 0 34%;
   background-image: url("../img/his_hers_original_scale.jpg");
 }
 div.Content[package='Wedding.modules'] .portrait div.slider .big_sur {
   background-position: 0 70%;
-  background-image: url("../img/kathryn_and_me_bigsur.jpg");
+  background-image: url("../img/bigSur2.jpg");
+}
+div.Content[package='Wedding.modules'] .portrait div.slider .bay_bridge {
+  background-position: 0 85%;
+  background-image: url("../img/BayBridge.JPG");
+}
+div.Content[package='Wedding.modules'] .portrait div.slider .south_africa {
+  background-position: 0 30%;
+  background-image: url("../img/SouthAfricaPier.jpg");
+}
+div.Content[package='Wedding.modules'] .portrait div.slider .sacramento {
+  background-position: 0 50%;
+  background-image: url("../img/Sacramento.jpg");
+}
+div.Content[package='Wedding.modules'] .portrait div.slider .seattle_wheel {
+  background-position: 0 50%;
+  background-image: url("../img/SeattleWheel.JPG");
+}
+div.Content[package='Wedding.modules'] .portrait div.slider .space_needle {
+  background-position: 0 78%;
+  background-image: url("../img/SpaceNeedle.jpg");
 }
 div.Content[package='Wedding.modules'] .portrait div.slider div.slide:after {
   content: " ";
@@ -153,7 +173,7 @@ div.Content[package='Wedding.modules'] .portrait div.slidernav:after {
 }
 div.Content[package='Wedding.modules'] .portrait div.banner {
   position: absolute;
-  top: 0;
+  top: 100px;
   left: 300px;
   color: white;
   z-index: 1;
@@ -229,7 +249,7 @@ div.Content[package='Wedding.modules'] div.sections iframe {
   opacity: 1;
 }
 div[package='Wedding.modules'].EventInformation .information .specifics {
-  margin-bottom: 10px;
+  margin: 20px 0;
 }
 div[package='Wedding.modules'].EventInformation .information div.specifics .location {
   float: left;
@@ -270,7 +290,7 @@ div.Header[package='Wedding.modules'] div.container {
   float: left;
 }
 div.Header[package='Wedding.modules'] div.container div.sections {
-  width: 900px;
+  width: 850px;
   margin: 0 auto;
   padding: 20px 0;
 }
@@ -298,22 +318,38 @@ div.Header[package='Wedding.modules'] div.container:after {
 div.OurStory[package='Wedding.modules'] {
   width: 100%;
 }
-div.OurStory[package='Wedding.modules'] .story .story-version {
+div.OurStory[package='Wedding.modules'] .story {
+  width: 850px;
+}
+div.OurStory[package='Wedding.modules'] .story .chapter {
+  width: 850px;
+  font-size: 10pt;
+}
+div.OurStory[package='Wedding.modules'] .story .chapter h5 {
+  margin: 10 auto;
+  font-size: 17px;
+  font-weight: bold;
+  text-align: center;
+}
+div.OurStory[package='Wedding.modules'] .story .chapter div {
   float: left;
-  width: 432px;
+  width: 408px;
 }
-div.OurStory[package='Wedding.modules'] .story .story-version p {
-  font-size: 12px;
+div.OurStory[package='Wedding.modules'] .story .chapter div .who {
+  font-weight: bold;
 }
-div.OurStory[package='Wedding.modules'] .story .story-version.kathryn {
-  margin-right: 18px;
+div.OurStory[package='Wedding.modules'] .story .chapter div p {
+  font-style: italic;
 }
-div.OurStory[package='Wedding.modules'] .story .story-version.raymond {
-  margin-left: 18px;
+div.OurStory[package='Wedding.modules'] .story .chapter .kathryn {
+  margin-right: 17px;
+}
+div.OurStory[package='Wedding.modules'] .story .chapter .raymond {
+  margin-left: 17px;
 }
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids,
 div[package='Wedding.modules'].TheWeddingParty .groomsmen {
-  width: 432px;
+  width: 408px;
   float: left;
 }
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids .group,
@@ -330,7 +366,7 @@ div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person {
 }
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person .name,
 div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person .name {
-  width: 232px;
+  width: 208px;
   float: left;
   text-align: center;
   line-height: 150px;
@@ -354,10 +390,10 @@ div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person .abou
   display: none;
 }
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids {
-  margin-right: 18px;
+  margin-right: 17px;
 }
 div[package='Wedding.modules'].TheWeddingParty .groomsmen {
-  margin-left: 18px;
+  margin-left: 17px;
 }
 div[package='Wedding.modules'].TheWeddingParty .cannotSeeThis {
   display: none;
@@ -410,7 +446,7 @@ div[package='Wedding.modules'].TheWeddingParty .groomsmen:after {
   clear: both;
 }
 div[package='Wedding.modules'].TravelInfo .first-three-width {
-  width: 272.18px;
+  width: 256.68px;
 }
 div[package='Wedding.modules'].TravelInfo div div.seeMore {
   display: hidden;
@@ -419,12 +455,12 @@ div[package='Wedding.modules'].TravelInfo div.air-travel,
 div[package='Wedding.modules'].TravelInfo div.accommodations,
 div[package='Wedding.modules'].TravelInfo div.ground-transport {
   float: left;
-  width: 272.18px;
+  width: 256.68px;
 }
 div[package='Wedding.modules'].TravelInfo div.air-travel .prev,
 div[package='Wedding.modules'].TravelInfo div.accommodations .prev,
 div[package='Wedding.modules'].TravelInfo div.ground-transport .prev {
-  width: 272.18px;
+  width: 256.68px;
   height: 160px;
 }
 div[package='Wedding.modules'].TravelInfo div.air-travel div.prev,
@@ -449,10 +485,10 @@ div[package='Wedding.modules'].TravelInfo div.ground-transport div.prev {
   background-image: url('/img/Classic-cable-car.jpg');
 }
 div[package='Wedding.modules'].TravelInfo div.accommodations {
-  margin: 0 27px;
+  margin: 0 25.5px;
 }
 div[package='Wedding.modules'].TravelInfo div.accommodations .table {
-  width: 270px;
+  width: 250px;
   border-color: #601a78;
 }
 div[package='Wedding.modules'].TravelInfo div.accommodations .table .row .cell {
@@ -460,7 +496,7 @@ div[package='Wedding.modules'].TravelInfo div.accommodations .table .row .cell {
   padding: 3px;
 }
 div[package='Wedding.modules'].TravelInfo div.accommodations .table .row .cell:nth-child(1) {
-  width: 175px;
+  width: 155px;
 }
 div[package='Wedding.modules'].TravelInfo div.accommodations .table .row .cell:nth-child(2) {
   width: 80px;
