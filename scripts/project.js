@@ -18,7 +18,7 @@ var PageModal = function() {
 		var modalContainer = $('.pageModal.containing-box').find('.container');
 		$(content).appendTo(modalContainer);
 		if(automaticallyShow === true) {
-			showModal();
+			that.showModal();
 		}
 	};
 	
@@ -401,14 +401,14 @@ Wedding.modules.Header = function() {
 	var clickSections = function(event) {
 		var scrollTo = function(target) {
 			$('html,body').animate({
-				 scrollTop: $(target).offset().top - $('.Header').height()
+				 scrollTop: $(target).offset().top - $('.Header').height() - 20
 			});
 		};
 
 		if($(event.target).html() == "Home") {
 			scrollTo($('.website'));
 		} else {
-			var reference = $(event.target).attr('ref');
+			var reference = $(event.target).parents('li').attr('ref');
 	
 			if(reference != null) {
 				var target = $('div[package="Wedding.modules"].Content').find('div[anchor="' + reference + '"]');
@@ -560,6 +560,29 @@ Wedding.modules.TravelInfo = function() {
 
     this.init = function(parentElement) {
     	that.parentElement = parentElement;
+
+    	$('a.more-details').click(function(e) {
+    		var classNames = $(e.target).attr('class').split(' ');
+    		var i = 0, len = -1;
+
+    		var targetClassName = null;
+    		for(i = 0, len = classNames.length; i < len; i++) {
+    			if(classNames[i] != 'more-details') {
+    				targetClassName = classNames[i];
+    				break;
+    			}
+    		}
+
+    		var candidatesToShow = $('.show-only-in-modal');
+    		for(i = 0, len = candidatesToShow.length; i < len; i++) {
+    			if($(candidatesToShow[i]).hasClass(targetClassName)) {
+    				pageModal.loadIntoModal($(candidatesToShow[i]).clone(), true);
+    				break;
+    			}
+    		}
+    		return false;
+    	});
+
     	hideTooMuch();
 	};
 

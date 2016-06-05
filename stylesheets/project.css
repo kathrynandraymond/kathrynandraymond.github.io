@@ -81,6 +81,15 @@ body .table:after {
   display: block;
   clear: both;
 }
+a:link,
+.lookLikeALink {
+  color: blue;
+  text-decoration: none;
+}
+a:link:hover,
+.lookLikeALink:hover {
+  text-decoration: underline;
+}
 .clearFloat {
   content: " ";
   display: block;
@@ -338,9 +347,6 @@ div.OurStory[package='Wedding.modules'] .story .chapter div {
 div.OurStory[package='Wedding.modules'] .story .chapter div .who {
   font-weight: bold;
 }
-div.OurStory[package='Wedding.modules'] .story .chapter div p {
-  font-style: italic;
-}
 div.OurStory[package='Wedding.modules'] .story .chapter .kathryn {
   margin-right: 17px;
 }
@@ -357,9 +363,15 @@ div[package='Wedding.modules'].TheWeddingParty .groomsmen .group {
   font-size: 20pt;
   text-align: center;
 }
+div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person:hover .name,
+div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person:hover .name {
+  text-decoration: underline;
+}
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person,
 div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person {
   cursor: pointer;
+  color: blue;
+  text-decoration: none;
   margin: 15px auto;
   margin: 5px;
   padding: 3px;
@@ -451,6 +463,9 @@ div[package='Wedding.modules'].TravelInfo .first-three-width {
 div[package='Wedding.modules'].TravelInfo div div.seeMore {
   display: hidden;
 }
+div[package='Wedding.modules'].TravelInfo div .show-only-in-modal {
+  display: none;
+}
 div[package='Wedding.modules'].TravelInfo div.air-travel,
 div[package='Wedding.modules'].TravelInfo div.accommodations,
 div[package='Wedding.modules'].TravelInfo div.ground-transport {
@@ -496,10 +511,14 @@ div[package='Wedding.modules'].TravelInfo div.accommodations .table .row .cell {
   padding: 3px;
 }
 div[package='Wedding.modules'].TravelInfo div.accommodations .table .row .cell:nth-child(1) {
-  width: 155px;
+  width: 60px;
 }
 div[package='Wedding.modules'].TravelInfo div.accommodations .table .row .cell:nth-child(2) {
-  width: 80px;
+  width: 60px;
+  text-align: right;
+}
+div[package='Wedding.modules'].TravelInfo div.accommodations .table .row .cell:nth-child(3) {
+  width: 60px;
   text-align: right;
 }
 div[package='Wedding.modules'].TravelInfo div.things-to-do {
