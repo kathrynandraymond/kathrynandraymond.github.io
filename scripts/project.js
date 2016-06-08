@@ -263,50 +263,56 @@ Wedding.modules.Content = function() {
 	var placeHolder = null;
 	var autoSlider = null;
 	var portraitWidth = -1;
+	var focusedSlideClassName = 'focused';
+	var isSlidingAlready = false;
 
 	var slideAction = function(rightToLeft, callback) {
 		var portrait = $(placeHolder).find('.portrait');
-		var sliderTray = $(portrait).find('.slider');
-		var slides = $(sliderTray).find('.slide');
+		var slides = $(portrait).find('.slider .slide');
 
-		var currentSlide = $(slides)[0];
+		var currentSlideIndex = null;
+		for(var i = 0, len = slides.length; i < len; i++) {
+			if($(slides[i]).hasClass(focusedSlideClassName)) {
+				currentSlideIndex = i;
+				break;
+			}
+		}
 		var copyOf = null;
 
-		if(rightToLeft) {
-			$(sliderTray).animate({
-				marginLeft: (-1 * portraitWidth) + 'px'
-			}, {
-				duration: 500,
-				complete: function() {
-					copyOf = $(currentSlide).clone();
-					$(currentSlide).remove();
-					$(sliderTray).css('margin-left', 0);
-					$(copyOf).appendTo(sliderTray);
-
-					if(callback != null) {
-						callback();
-					}
-				}
-			});
-		} else {
-			var last = $(slides)[slides.length - 1];
-			copyOf = $(last).clone();
-			$(copyOf).prependTo(sliderTray);
-			$(sliderTray).css('margin-left', (-1 * portraitWidth) + 'px');
-			$(last).remove();
-
-			$(sliderTray).animate({
-				marginLeft: '0px'
-			}, {
-				duration: 500,
-				complete: function() {
-					$(last).remove();
-					if(callback != null) {
-						callback();
-					}
-				}
-			});
+		var newSlideIndex = rightToLeft ? currentSlideIndex + 1 : currentSlideIndex - 1;
+		if(newSlideIndex >= slides.length) {
+			newSlideIndex = 0;
+		} else if(newSlideIndex < 0) {
+			newSlideIndex = slides.length - 1;
 		}
+
+		(function(slideToShow, slideToHide) {
+			if(!isSlidingAlready) {
+				isSlidingAlready = true;
+				var fullOpacity = 10.0;
+				var noOpacity = 0.0;
+	
+				var transition = setInterval(function() {
+	
+					$(slideToShow).css('opacity', noOpacity / 10.0);
+					$(slideToHide).css('opacity', fullOpacity / 10.0);
+	
+					if(noOpacity === 10 || fullOpacity === 0.0) {
+						clearInterval(transition);
+						$(slideToShow).addClass(focusedSlideClassName);
+						$(slideToHide).removeClass(focusedSlideClassName);
+	
+						if(callback != null) {
+							callback();
+						}
+						isSlidingAlready = false;
+					}
+	
+					noOpacity++;
+					fullOpacity--;
+				}, 50);
+			}
+		})($(slides[newSlideIndex]), $(slides[currentSlideIndex]));
 	};
 
 	var activateAutoSlide = function() {
@@ -335,7 +341,11 @@ Wedding.modules.Content = function() {
 		portraitWidth = $(portrait).width();
 
 		if(portraitSliders.length > 1) {
-			$(portrait).find('.slider').width(portraitSliders.length * portraitWidth);
+			$(portraitSliders[0]).addClass(focusedSlideClassName).animate({
+				opacity: 1.0
+			}, {
+				duration: 500
+			});
 
 			activateAutoSlide();
 			activateManualSlideNavigation();
