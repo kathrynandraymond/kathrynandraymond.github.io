@@ -378,6 +378,20 @@ Wedding.modules.Footer = function() {
 var Wedding = Wedding || {};
 Wedding.modules = Wedding.modules || {};
 
+Wedding.modules.Gifts = function() {
+	var that = this;
+
+    var parentElement = null;
+
+    this.init = function(parentElement) {
+    	that.parentElement = parentElement;
+	};
+};
+
+
+var Wedding = Wedding || {};
+Wedding.modules = Wedding.modules || {};
+
 Wedding.modules.Header = function() {
 	var that = this;
 	this.wrapper = null;
@@ -415,18 +429,21 @@ Wedding.modules.Header = function() {
 			});
 		};
 
-		if($(event.target).html() == "Home") {
-			scrollTo($('.website'));
-		} else {
-			var reference = $(event.target).parents('li').attr('ref');
-	
-			if(reference != null) {
-				var target = $('div[package="Wedding.modules"].Content').find('div[anchor="' + reference + '"]');
+		var itemVal = $.trim($(event.target).html());
+		switch(itemVal) {
+			case 'Home':
+				scrollTo($('.website'));
+				break;
+			default:
+				var reference = $(event.target).parents('li').attr('ref');
 		
-				if(target != null) {
-					scrollTo(target);
+				if(reference != null) {
+					var target = $('div[package="Wedding.modules"].Content').find('div[anchor="' + reference + '"]');
+			
+					if(target != null) {
+						scrollTo(target);
+					}
 				}
-			}
 		}
 	};
 };
@@ -441,6 +458,20 @@ Wedding.modules.OurStory = function() {
 	
 	};
 };
+
+var Wedding = Wedding || {};
+Wedding.modules = Wedding.modules || {};
+
+Wedding.modules.Rsvp = function() {
+	var that = this;
+
+    var parentElement = null;
+
+    this.init = function(parentElement) {
+    	that.parentElement = parentElement;
+	};
+};
+
 
 var Wedding = Wedding || {};
 Wedding.modules = Wedding.modules || {};
