@@ -44,11 +44,8 @@ pageModal.init();
 
 
 var data = {
-	people: {
-		bridesmaids: [],
-		groomsmen: []
-	}
-};data.people.bridesmaids.push({
+	people: []
+};data.people.push({
 	"name": "Christy Ng",
 	"type":"Maid of Honor",
 	"imgs":[
@@ -67,7 +64,7 @@ var data = {
 		"strength and laughter. "
 	]
 });
-data.people.groomsmen.push({
+data.people.push({
 	"name": "Chung Yeoh",
 	"type":"Groomsman",
 	"thumbnails":[
@@ -85,7 +82,7 @@ data.people.groomsmen.push({
 		"influence that convinced Raymond to go to bars and get drinks regularly at the way too young age of 30."
 	]
 });
-data.people.groomsmen.push({
+data.people.push({
 	"name": "Elbert Chan",
 	"type":"Groomsman",
 	"thumbnails":[
@@ -100,7 +97,7 @@ data.people.groomsmen.push({
 		"Raymond's older brother, Elbert, is a master of dance. So ladies, if you're looking for a man with moves, look no further.  Elbert is also an expert in dealing with computers; which (indirectly) influenced the direction that Raymond took in his education and career to become who he is today. Other things that Elbert is credited  with: <ul><li>Anything Raymond knows about Star Trek</li><li>appearing in the mirror when Raymond looks into it</li></ul>"
 	]
 });
-data.people.groomsmen.push({
+data.people.push({
 	"name": "Eli Martin Lara",
 	"type":"Best Man",
 	"thumbnails":[
@@ -116,7 +113,7 @@ data.people.groomsmen.push({
 		"Martin and Raymond were roommates while attending UC Davis. They go as far back as to when dial-up modems were common and DSL was so new and awesome. In the townhouse that they shared, Martin was the roommate that occupied the haunted bedroom. If you've never heard the story, please ask."
 	]
 });
-data.people.bridesmaids.push({
+data.people.push({
 	"name": "Eva Lee",
 	"type":"Bridesmaid",
 	"imgs":[
@@ -134,7 +131,7 @@ data.people.bridesmaids.push({
 		"and planner of many road trips and gatherings. " 
 	]
 });
-data.people.bridesmaids.push({
+data.people.push({
 	"name": "Rebecca Reh",
 	"type":"Bridesmaid",
 	"thumbnails":[
@@ -469,7 +466,17 @@ Wedding.modules.Rsvp = function() {
 
     this.init = function(parentElement) {
     	that.parentElement = parentElement;
+
+    	$('.rsvp').click(function(event) {
+    		var ele = $(event.target);
+   			var link = $(ele).attr('link');
+
+   			if(link != null && link.length > 0) {
+    			window.open(link);
+    		}
+    	});
 	};
+
 };
 
 
@@ -484,16 +491,12 @@ Wedding.modules.TheWeddingParty = function() {
 
 	var findPersonByName = function(name) {
 		var i, len;
-		for(i = 0, len = people.bridesmaids.length; i < len; i++) {
-			if(people.bridesmaids[i].name == name) {
-				return people.bridesmaids[i];
+		for(i = 0, len = people.length; i < len; i++) {
+			if(people[i].name == name) {
+				return people[i];
 			}
 		}
-		for(i = 0, len = people.groomsmen.length; i < len; i++) {
-			if(people.groomsmen[i].name == name) {
-				return people.groomsmen[i];
-			}
-		}
+
 		return null;
 	};
 
@@ -502,17 +505,14 @@ Wedding.modules.TheWeddingParty = function() {
 		var bridesmaidsGallery = $(parentElement).find('.bridesmaids .gallery');
 		var groomsmenGallery = $(parentElement).find('.groomsmen .gallery');
 
-		loadGroupToGallery(people.bridesmaids, bridesmaidsGallery,
-				$(parentElement).find('.cannotSeeThis .person[enlarged="false"].bridesmaids'));
-		loadGroupToGallery(people.groomsmen, groomsmenGallery,
-				$(parentElement).find('.cannotSeeThis .person[enlarged="false"].groomsmen'));
+		loadGroupToGallery($(parentElement).find('.cannotSeeThis .person[enlarged="false"]'));
 
 		$('.gallery').click(function(event) {
 			var focusedPerson = $(event.target).parents('div.person');
 			if(focusedPerson != null && focusedPerson.length > 0) {
 				var person = findPersonByName($(focusedPerson).find('.name').html());
 				pageModal.emptyModal();
-				var enlargedPerson = addPersonToTemplate(person, $('.cannotSeeThis .person[enlarged="true"]'));
+				var enlargedPerson = createPersonObj(person, $('.cannotSeeThis .person[enlarged="true"]'));
 				pageModal.loadIntoModal($(enlargedPerson), false);
 
 				var pictureFrame = $(enlargedPerson).find('.photo');
@@ -553,18 +553,18 @@ Wedding.modules.TheWeddingParty = function() {
 		});
 	};
 
-	var loadGroupToGallery = function(group, galleryElement, template) {
-		for(var i = 0, len = group.length; i < len; i++) {
-			var personInst = addPersonToTemplate(group[i], template);
-			if(Math.floor(Math.random() * 2) == 0) {
-				$(personInst).appendTo(galleryElement);
-			} else {
-				$(personInst).prependTo(galleryElement);
+	var loadGroupToGallery = function(template) {
+		for(var i = 0, len = data.people.length; i < len; i++) {
+			var person = data.people[i];
+			var placeholder = $('.gallery .person[name="' + person.name + '"]');
+			if(placeholder != null) {
+				var personInst = createPersonObj(person, template);
+				$(placeholder).html($(personInst).html());
 			}
 		}
 	};
 
-	var addPersonToTemplate = function(person, template) {
+	var createPersonObj = function(person, template) {
 		var personInst = $(template).clone();
 		$(personInst).find('.name').html(person.name);
 		$(personInst).find('.role').html(person.type);

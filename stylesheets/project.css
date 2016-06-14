@@ -81,6 +81,20 @@ body .table:after {
   display: block;
   clear: both;
 }
+body div.button {
+  background-color: #601a78;
+  background-color: RebeccaPurple;
+  padding: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  color: white;
+  display: inline-block;
+}
+body div.button:hover {
+  cursor: pointer;
+  border: 1px solid white;
+}
 a:link,
 .lookLikeALink {
   color: blue;
@@ -240,7 +254,7 @@ div.Content[package='Wedding.modules'] div.widget div[package='Wedding.widgets']
   font-size: 8pt;
 }
 div.Content[package='Wedding.modules'] div[package='Wedding.modules'] {
-  margin: 30px 0 0 0;
+  margin: 60px 0 0 0;
 }
 div.Content[package='Wedding.modules'] div.widget:after {
   content: " ";
@@ -358,9 +372,15 @@ div.OurStory[package='Wedding.modules'] .story .chapter .kathryn {
 div.OurStory[package='Wedding.modules'] .story .chapter .raymond {
   margin-left: 17px;
 }
+div.Rsvp[package='Wedding.modules'] {
+  width: 100%;
+}
+div.Rsvp[package='Wedding.modules'] div.rsvp.button {
+  margin: 0 auto;
+}
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids,
 div[package='Wedding.modules'].TheWeddingParty .groomsmen {
-  width: 408px;
+  width: 425px;
   float: left;
 }
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids .group,
@@ -377,22 +397,18 @@ div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person {
   cursor: pointer;
   color: blue;
   text-decoration: none;
-  margin: 15px auto;
-  margin: 5px;
-  padding: 3px;
+  margin: 30px auto;
 }
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person .name,
 div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person .name {
-  width: 208px;
-  float: left;
   text-align: center;
-  line-height: 150px;
 }
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person .photo,
 div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person .photo {
-  float: left;
   width: 200px;
   height: 200px;
+  margin: 0 auto;
+  border-radius: 50%;
 }
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person .photo img,
 div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person .photo img {
@@ -405,12 +421,6 @@ div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person .role
 div[package='Wedding.modules'].TheWeddingParty .bridesmaids .gallery .person .about,
 div[package='Wedding.modules'].TheWeddingParty .groomsmen .gallery .person .about {
   display: none;
-}
-div[package='Wedding.modules'].TheWeddingParty .bridesmaids {
-  margin-right: 17px;
-}
-div[package='Wedding.modules'].TheWeddingParty .groomsmen {
-  margin-left: 17px;
 }
 div[package='Wedding.modules'].TheWeddingParty .cannotSeeThis {
   display: none;
@@ -432,16 +442,13 @@ div[package='Wedding.modules'].TheWeddingParty .groomsmen:after {
 .pageModal.containing-box {
   background-color: white;
 }
-.pageModal.containing-box .container {
-  padding: 5px;
-}
 .pageModal.containing-box .container .person .photo {
   float: left;
   min-width: 200px;
   min-height: 200px;
   max-width: 500px;
   max-height: 500px;
-  margin: 10px;
+  margin: 0;
 }
 .pageModal.containing-box .container .person .photo img.show {
   display: inline;
